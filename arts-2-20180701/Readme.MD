@@ -1,6 +1,6 @@
 This is my second ARTS, i feel lighter than the first time.
 # **1.Algorithm**
-**Question£º**
+**Questionï¼š**
 
 Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -91,16 +91,16 @@ the code as following is ignored at my first time submission.
 
 # **2.Review**
 
-±¾ÖÜÈ±£¬Ç¿ÁÒÇ´Ôğ~_~
+æœ¬å‘¨ç¼ºï¼Œå¼ºçƒˆè°´è´£~_~
 
 # **3.Tips**
-¹ØÓÚÔÚDocker»·¾³ÏÂ»ñÈ¡²Ù×÷ÏµÍ³µÇÂ¼ÓÃ»§ÃûµÄÎÊÌâ£¬getlogin()ºÍgetuid()±È½Ï¡£Docker»ù´¡¾µÏñÎª£ºyjjy0921/redhat7.2
+å…³äºåœ¨Dockerç¯å¢ƒä¸‹è·å–æ“ä½œç³»ç»Ÿç™»å½•ç”¨æˆ·åçš„é—®é¢˜ï¼Œgetlogin()å’Œgetuid()æ¯”è¾ƒã€‚DockeråŸºç¡€é•œåƒä¸ºï¼šyjjy0921/redhat7.2
 
-### **3.1 ¾ßÌåÎÊÌâ**
-ÔÚÇ¨ÒÆÄ³¸öÓ¦ÓÃµ½Docker»·¾³Ê±·¢ÏÖÒòÎªµ÷ÓÃ²Ù×÷ÏµÍ³µÄgetlogin()·½·¨(sys/types.h)»ñÈ¡²»µ½µÇÂ¼ÓÃ»§µ÷ÓÃµ¼ÖÂstrcpyº¯ÊıµÄµ÷ÓÃÖ±½ÓcoreÁË¡£
-µ±Ê±ÊÇ´ÓRedhat7.2ËŞÖ÷»úÇ¨ÒÆµ½ÔËĞĞRedhat7.2µÄDockerÈİÆ÷ÖĞ¡£
+### **3.1 å…·ä½“é—®é¢˜**
+åœ¨è¿ç§»æŸä¸ªåº”ç”¨åˆ°Dockerç¯å¢ƒæ—¶å‘ç°å› ä¸ºè°ƒç”¨æ“ä½œç³»ç»Ÿçš„getlogin()æ–¹æ³•(sys/types.h)è·å–ä¸åˆ°ç™»å½•ç”¨æˆ·è°ƒç”¨å¯¼è‡´strcpyå‡½æ•°çš„è°ƒç”¨ç›´æ¥coreäº†ã€‚
+å½“æ—¶æ˜¯ä»Redhat7.2å®¿ä¸»æœºè¿ç§»åˆ°è¿è¡ŒRedhat7.2çš„Dockerå®¹å™¨ä¸­ã€‚
 
-³öÎÊÌâµÄ´úÂëÈçÏÂ£ºgetlogin() µÄµ÷ÓÃ»áµ¼ÖÂcore
+å‡ºé—®é¢˜çš„ä»£ç å¦‚ä¸‹ï¼šgetlogin() çš„è°ƒç”¨ä¼šå¯¼è‡´core
 ```c++
 #include <cstdio>
 #include <iostream>
@@ -118,12 +118,12 @@ int main(int argc, char *argv[])
     return 0;
 }
 ```
-### **3.2 Ô­Òò·ÖÎö**
- ¾­²éÓë/var/run/utmpÎÄ¼şÓĞ¹Ø£¬Ê¹ÓÃdocker cpÃüÁî¿½±´ÄÚÍøËŞÖ÷»úÉÏµÄ/var/run/utmpÎÄ¼şµ½ÈİÆ÷¶ÔÓ¦µÄ/var/run/utmpÒ²²»ĞĞ£¬×îºóµÄ½â¾ö·½·¨ÊÇÔÚÍâÍøÕÒµ½Ò»¸öredhat7.2£¬¿½±´/var/run/utmpÎÄ¼şµ½¾µÏñÖĞµÃÒÔ½â¾ö¡£
-µ«Õâ²»ÊÇ×îÖÕ½â¾ö·½°¸£¬×îºóÔÚstackoverflowÉÏ·¢ÏÖÈç¹ûÒ»¶¨ĞèÒª»ñÈ¡µÇÂ¼ÓÃ»§µÄ»°½¨Òé´úÂëµ÷ÕûÎªÍ¨¹ıgetuid·½·¨»ñÈ¡¡£getlogin()ÊÇÒ»¸ö²»°²È«µÄ·½·¨£¬²»ÍÆ¼ö£¬Ïê¼û£ºhttps://stackoverflow.com/questions/4785126/getlogin-c-function-returns-null-and-error-no-such-file-or-directory¡£
+### **3.2 åŸå› åˆ†æ**
+ ç»æŸ¥ä¸/var/run/utmpæ–‡ä»¶æœ‰å…³ï¼Œä½¿ç”¨docker cpå‘½ä»¤æ‹·è´å†…ç½‘å®¿ä¸»æœºä¸Šçš„/var/run/utmpæ–‡ä»¶åˆ°å®¹å™¨å¯¹åº”çš„/var/run/utmpä¹Ÿä¸è¡Œï¼Œæœ€åçš„è§£å†³æ–¹æ³•æ˜¯åœ¨å¤–ç½‘æ‰¾åˆ°ä¸€ä¸ªredhat7.2ï¼Œæ‹·è´/var/run/utmpæ–‡ä»¶åˆ°é•œåƒä¸­å¾—ä»¥è§£å†³ã€‚
+ä½†è¿™ä¸æ˜¯æœ€ç»ˆè§£å†³æ–¹æ¡ˆï¼Œæœ€ååœ¨stackoverflowä¸Šå‘ç°å¦‚æœä¸€å®šéœ€è¦è·å–ç™»å½•ç”¨æˆ·çš„è¯å»ºè®®ä»£ç è°ƒæ•´ä¸ºé€šè¿‡getuidæ–¹æ³•è·å–ã€‚getlogin()æ˜¯ä¸€ä¸ªä¸å®‰å…¨çš„æ–¹æ³•ï¼Œä¸æ¨èï¼Œè¯¦è§ï¼šhttps://stackoverflow.com/questions/4785126/getlogin-c-function-returns-null-and-error-no-such-file-or-directoryã€‚
 
-### **3.3 ½â¾ö·½°¸**
-½¨Òé²ÎÕÕÈçÏÂÑùÀı´úÂëµ÷Õû£¬²ÉÓÃgetuid·½·¨¿ÉÒÔºÜÓĞĞ§µÄ¹æ±Ügetlogin·½·¨ÊÜ/var/run/utmpÎÄ¼şÓ°Ïì£¬ÒÔ¼°´æÔÚµÄ°²È«ĞÔÎÊÌâ£º
+### **3.3 è§£å†³æ–¹æ¡ˆ**
+å»ºè®®å‚ç…§å¦‚ä¸‹æ ·ä¾‹ä»£ç è°ƒæ•´ï¼Œé‡‡ç”¨getuidæ–¹æ³•å¯ä»¥å¾ˆæœ‰æ•ˆçš„è§„é¿getloginæ–¹æ³•å—/var/run/utmpæ–‡ä»¶å½±å“ï¼Œä»¥åŠå­˜åœ¨çš„å®‰å…¨æ€§é—®é¢˜ï¼š
 ```python
 
 #include <unistd.h>
@@ -141,121 +141,20 @@ int main() {
 ```
 
 # **4.Share**
-## ÓÅ»¯docker¾µÏñÎÄ¼ş´óĞ¡
-dockerÄ¿Ç°ÒÑ¾­ºÜ»ğÈÈÁË£¬ÔÚÎÒÃÇ¶ÔÓ¦ÓÃ½øĞĞÈİÆ÷»°ÔËĞĞµÄµÚÒ»²½±ãÊÇ°ÑÓ¦ÓÃ´ò°üµ½¾µÏñÖĞ£¬Í¨³£ÎÒÃÇ¿ÉÄÜĞèÒª´ò°üÒ»Ğ©»ù´¡¹¤¾ß(redhat\centosÕâÑùµÄÆ½Ì¨¾ÍÊÇÓÃyum½øĞĞ°²×°)¡¢ÖĞ¼ä¼ş£¬×îºó°ÑÎÒÃÇµÄÓ¦ÓÃ¿½±´½øÈİÆ÷£¬»¹ºÜÓĞ¿ÉÄÜĞèÒª¶ÔÎÄ¼şÈ¨ÏŞ½øĞĞ¸ü¸Ä¡£
-### **4.1 ÔÚÖÆ×÷docker¾µÏñÊ±ÎÒÃÇºÜ¿ÉÄÜ¹¹ÔìÈçÏÂµÄÄ¿Â¼½á¹¹**
+
+# **4.åºåˆ—åŒ–ä¸åˆ†å¸ƒå¼**
+## ä¼˜åŒ–dockeré•œåƒæ–‡ä»¶å¤§å°
+
+### **4.1 åºåˆ—åŒ–æ¯”è¾ƒ**
 ```shell
-DOCKERFILE
-dockerimages/oracle.libs.tar.gz
-dockerimages/saleapp.war
-dockerimages/tomcat.zip
-dockerimages/deps/libaio-0.3.109-13.el7.x86_64.rpm
+
 ```
-### **4.2 ÓÅ»¯Ç°dockerfile**
+### **4.2 åˆ†å¸ƒå¼æ¯”è¾ƒ**
+![avater](../images/2-distribute-corba-dev.png)
 ```docker
-# pull base image
-# --------------
-FROM 10.10.10.13:5000/gs.mobile.com/redhat7.2
 
-# Maintainer
-# --------------
-MAINTAINER xuqingkang  <qingkang.xu@bessystem.com>
-
-RUN echo 'root:root' | chpasswd
-
-# Environment variables required for this build
-# ---------------------------------------------
-ENV APP_PKG=saleapp.war
-ENV ORACLE_LIS_PKG=oracle.libs.tar.gz
-ENV ORACLE_HOME_DIR=/app/oracle/product/12.1.0/db
-
-ADD dockerimages/$ORACLE_LIS_PKG $ORACLE_HOME_DIR
-ADD dockerimages/$APP_PKG /app/$APP_PKG
-
-COPY dockerimages/deps/libaio-0.3.109-13.el7.x86_64.rpm /deps/libaio-0.3.109-13.el7.x86_64.rpm
-
-# Setup filesystem and wjtpss user
-#-----------------------------
-
-RUN chmod a+xr -R /wjtpss && \
-  useradd -d /wjtpss -s /bin/bash wjtpss && \
-  echo wjtpss:wjtpss | chpasswd  && \
-  chown wjtpss:wjtpss -R /wjtpss && \
-  chmod -R 755 /usr/lib64 && \
-  chmod -R 755 $ORACLE_HOME_DIR && \
-  rpm -ivh /deps/libaio-0.3.109-13.el7.x86_64.rpm
-
-USER wjtpss
-
-WORKDIR $WJTPSS_HOME
-
-ENTRYPOINT /bin/bash
 ```
-Õâ¸ödockerfileÊÇ¿ÉÒÔÖÆ×÷³ö¾µÏñÀ´µÄ£¬ÆäÍ¨¹ıDOCKERFILEµÄADDÃüÁî½âÑ¹oracleµÄÒÀÀµ¿âºÍºÍÓ¦ÓÃ°üµ½ÈİÆ÷¾µÏñ£¬È»ºó»¹Ê¹ÓÃÁËchmodĞŞ¸ÄÎÄ¼şÈ¨ÏŞ£¬ÒÔ¼°Ê¹ÓÃrpm°²×°aio°ü¡£
-Æä´æÔÚÎÊÌâ£ºÒòÎªdocker¾µÏñ·Ö²ã£¬¶øÇÒ°´ÕÕCopy On WriteµÄË¼Â·£¬µ±ĞèÒª¶ÔÎÄ¼ş½øĞĞĞŞ¸ÄÊÇ¾Í»á½øĞĞ¿½±´¡£Õâ´øÀ´µÄÎÊÌâÊÇ±ÈÈçoracle.libs.tar.gzÎÄ¼ş±¾Éí±È½Ï´ó£¬ADDÖ®ºóÓÖÊ¹ÓÃchmodÃüÁî¶ÔÆäÈ¨ÏŞĞŞ¸ÄÎª755£¬Õâ¸öchmod»áµ¼ÖÂÒ»´ÎÎÄ¼ş¿½±´£¬¾ÍÎŞĞÎÖĞÔö¼ÓÁËdocker¾µÏñ´óĞ¡¡£
+è¿™ä¸ªdockerfileæ˜¯å¯ä»¥åˆ¶ä½œå‡ºé•œåƒæ¥çš„ï¼Œå…¶é€šè¿‡DOCKERFILEçš„ADDå‘½ä»¤è§£å‹oracleçš„ä¾èµ–åº“å’Œå’Œåº”ç”¨åŒ…åˆ°å®¹å™¨é•œåƒï¼Œç„¶åè¿˜ä½¿ç”¨äº†chmodä¿®æ”¹æ–‡ä»¶æƒé™ï¼Œä»¥åŠä½¿ç”¨rpmå®‰è£…aioåŒ…ã€‚
+å…¶å­˜åœ¨é—®é¢˜ï¼šå› ä¸ºdockeré•œåƒåˆ†å±‚ï¼Œè€Œä¸”æŒ‰ç…§Copy On Writeçš„æ€è·¯ï¼Œå½“éœ€è¦å¯¹æ–‡ä»¶è¿›è¡Œä¿®æ”¹æ˜¯å°±ä¼šè¿›è¡Œæ‹·è´ã€‚è¿™å¸¦æ¥çš„é—®é¢˜æ˜¯æ¯”å¦‚oracle.libs.tar.gzæ–‡ä»¶æœ¬èº«æ¯”è¾ƒå¤§ï¼ŒADDä¹‹ååˆä½¿ç”¨chmodå‘½ä»¤å¯¹å…¶æƒé™ä¿®æ”¹ä¸º755ï¼Œè¿™ä¸ªchmodä¼šå¯¼è‡´ä¸€æ¬¡æ–‡ä»¶æ‹·è´ï¼Œå°±æ— å½¢ä¸­å¢åŠ äº†dockeré•œåƒå¤§å°ã€‚
 
-## **4.3 ÓÅ»¯°æ±¾**
-
-### ÓÅ»¯Ë¼Â·£º¹¹½¨ÎÄ¼ş·şÎñÆ÷
-docker¾µÏñÎÄ¼şµÄÓÅ»¯£¬¾¡Á¿ÔÚRUN ÃüÁîÖĞÖ´ĞĞËùÓĞÎÄ¼ş²Ù×÷£¬¼õÉÙÎÄ¼ş²ã¶àÓàµÄ¿½±´¡£ÉÙÓÃADDºÍCOPYÃüÁî£¬Òò´Ë½¨Òé´î½¨Ò»¸öÎÄ¼ş·şÎñÆ÷£¬ÔÚRUNÃüÁîÖĞÍ¨¹ıcurl wgetµÈÃüÁî»ñÈ¡ÎÄ¼ş£¬Ö®ºó¶ÔÎÄ¼ş½øĞĞ²Ù×÷¡£
-ÉõÖÁ¿ÉÒÔ°ÑYUMÔ´Ò²ÅäÖÃÎªÎÄ¼ş·şÎñÆ÷£¬ÕâÑùµÄ»°dockerfileÖĞRUNÃüÁîÖĞµÄyum°²×°Ò²Ïàµ±ÓÚ´ÓÎÄ¼ş·şÎñÆ÷»ñÈ¡ÎÄ¼ş¡£
-
-### **4.3.1 ÓÅ»¯ºódockerfile**
-```docker
-# pull base image
-# --------------
-FROM 10.10.10.13:5000/gs.mobile.com/redhat7.2
-
-# Maintainer
-# --------------
-MAINTAINER xuqingkang  <qingkang.xu@bessystem.com>
-
-RUN echo 'root:root' | chpasswd
-
-# Environment variables required for this build
-# ---------------------------------------------
-ENV FILE_SERVER_URL=http://10.251.50.113:8090/fileserver/dockerimages
-ENV APP_PKG=saleapp.war
-ENV ORACLE_LIS_PKG=oracle.libs.tar.gz
-ENV ORACLE_HOME_DIR=/app/oracle/product/12.1.0/db
-
-# Setup filesystem and wjtpss user
-#-----------------------------
-
-RUN curl -o /etc/yum.repos.d/rhel_fileserver.repo $FILE_SERVER_URL/rhel_fileserver.repo && \
-  yum makecache && \
-  yum -y install net-tools && \
-  yum -y install telnet && \
-  yum -y install glibc-common && \
-  yum -y install iputils && \
-  chmod a+xr -R /wjtpss && \
-  useradd -d /wjtpss -s /bin/bash wjtpss && \
-  chmod -R 755 /usr/lib64 && \
-  curl -L $FILE_SERVER_URL/$ORACLE_LIS_PKG | tar zxf - && \
-  chmod -R 755 $ORACLE_HOME_DIR && \
-  curl -O $FILE_SERVER_URL/deps/libaio-0.3.109-13.el7.x86_64.rpm && \
-  rpm -ivh /deps/libaio-0.3.109-13.el7.x86_64.rpm
-
-USER wjtpss
-
-WORKDIR $WJTPSS_HOME
-
-ENTRYPOINT /bin/bash
-```
-### **4.3.2 ÓÅ»¯ºóµÄdockerfileÓĞ¼¸µã¸Ä½ø**
-1£¬Ã»ÓĞÊ¹ÓÃADD»òÕßCOPY½øĞĞÎÄ¼ş¿½±´£¬ÕâÑùµÄ»°¾ÍËãRUNÃüÁîÖĞÓĞchmodµÈÃüÁî¶ÔÎÄ¼ş½øĞĞ²Ù×÷Ò²²»»áµ¼ÖÂ¶àÒ»¼¶µÄ¿½±´
-
-2£¬ÅäÖÃÁËyumÔ´Ò²´ÓÎÄ¼ş·şÎñÆ÷»ñÈ¡°²×°°ü£¬ÕâÑùµÄ»°yum installÃüÁî¿ÉÒÔÖ±½ÓÔËĞĞ£¬²»ĞèÒªÌáÇ°¿½±´°²×°°ü(xxx.rpm)
-
-3£¬Ö±½ÓÍ¨¹ıcurl»ñÈ¡ÎÄ¼ş²¢½âÑ¹£¬½øĞĞÈ¨ÏŞ±ä¸ü
-
-4£¬Ö±½ÓÍ¨¹ıcurl»ñÈ¡rpm°üÖ®ºó½øĞĞ°²×°
-
-ÎÒÏàĞÅºÜ¶àÈË¶¼Óöµ½¹ıÖÆ×÷ºóµÄ¾µÏñ»á±ÈÏëÏóÖĞ´óµÄÎÊÌâ£¬Ò²ĞíÕâÊÇÒ»ÖÖ¼ò»¯µÄË¼Â·£¡
-
-# **5.×Ü½á**
-±¾ÆÚÊÇÎÒµÄARTS,ÓÃÁËõ¿½ÅµÄÓ¢ÓïĞ´ÍêÁËAlgorithmÊµÏÖË¼Â·£¬¶øÇÒÊÇÒ»¸öºÜ¼òµ¥µÄËã·¨Ìâ£¡
-
-È±ÁËReviewÎÄÕÂµãÆÀ£¬Ó¢ÎÄÕâÖÜÈ·ÊµÃ»ÓĞ¿´ÎÄÕÂ£¬Ò²ÊµÔÚ²¹²»ÁËÁË!  
-
-ÎÒÏàĞÅÒ»ÄêºóĞ´³öÀ´µÄARTS»á½ø²½ºÜ´óºÜ´ó£¡
+## **4.3 ä¼˜åŒ–ç‰ˆæœ¬**
