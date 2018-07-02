@@ -140,122 +140,267 @@ int main() {
 }
 ```
 
-# **4.Share**
-## 优化docker镜像文件大小
-docker目前已经很火热了，在我们对应用进行容器话运行的第一步便是把应用打包到镜像中，通常我们可能需要打包一些基础工具(redhat\centos这样的平台就是用yum进行安装)、中间件，最后把我们的应用拷贝进容器，还很有可能需要对文件权限进行更改。
-### **4.1 在制作docker镜像时我们很可能构造如下的目录结构**
-```shell
-DOCKERFILE
-dockerimages/oracle.libs.tar.gz
-dockerimages/saleapp.war
-dockerimages/tomcat.zip
-dockerimages/deps/libaio-0.3.109-13.el7.x86_64.rpm
+# **4.浅谈序列化技术**
+### **4.1 序列化比较**
+这次以Java为例，谈一下序列化的场景。
+
+序列化按照类别大概是如下两种序列化，一个针对字节码、一个针对格式化的字符串。
+
+1，字节码序列化：Protobuf、Hessian、Java序列化
+
+2，Json和xml序列化：jackjson、xstream等
+
+如下图所示，在分布式环境中客户端和服务器端通信涉及到的序列化技术，其中早期的SOAP WebService实现中大量使用XML格式，后来Restful接口的Web
+Service则使用JSON格式。未来，Docker和K8S的YAML格式会不会有可能用作这种远程调用？  而基于内网的远程调用框架gRPC、Thrift、ICE、Dubbo等底层采用不同的序列化技术，而一些商用的中间件在分布式调用中则有自己的调用协议(如Weblogic T3)，底层的序列化技术很可能采用的就是以上字节码序列化技术中的一种。
+
+![avater](../images/2-distribute-serialize-summary.png)
+
+### **4.2 各种序列化框架的使用方法**
+#### **4.2.1 序列化对象概述**
+我们本次使用序列化采用如下Java代码示例的User对象，其有名称、密码、年龄、地址(可多个)属性。
+
+```java
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class User implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	private String name;
+	private String password;
+	private int age;
+	private List<String> address = new ArrayList<String>();
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public List<String> getAddress() {
+		return address;
+	}
+	public void setAddress(List<String> address) {
+		this.address = address;
+	}
+}
 ```
-### **4.2 优化前dockerfile**
+
+我们的测试代码中，将会使用具备相同属性值的对象，会简单比较序列化字节数大小及使用方法。
+```java
+		// 构造测试对象
+		User user = new User();
+		user.setName("bes");
+		user.setPassword("BESDev");
+		user.setAge(8);
+		
+		user.getAddress().add("BeiJing ChaoYang");
+		user.getAddress().add("SuZhou JingChang");
+		user.getAddress().add("XiAn GaoXin");
+```
+
+#### **4.2.2 JDK序列化**
+JDK的序列化使用是最简单的，只需要保证需要序列化的类实现java.io.Serializable接口后，使用java.io.ObjectOutputStream类的writeObject和readObject便可以实现序列化和反序列化，如下示例代码：
+```java
+package serialize;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+import hessian.User;
+
+public class JDKSerializeMain {
+	public static void main(String[] args) throws Exception {
+		// 构造测试对象
+		User user = new User();
+		user.setName("bes");
+		user.setPassword("BESDev");
+		user.setAge(8);
+		
+		user.getAddress().add("BeiJing ChaoYang");
+		user.getAddress().add("SuZhou JingChang");
+		user.getAddress().add("XiAn GaoXin");
+
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		ObjectOutputStream objectOut = null;
+		try {
+			objectOut = new ObjectOutputStream(output);
+			objectOut.writeObject(user);
+			objectOut.close();
+			output.close();
+
+			System.out.write(output.toByteArray());
+			System.out.println();
+			System.out.println("序列化后的字节大小：" + output.toByteArray().length);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+```
+#### **4.2.3 Hessian序列化**
+Hessian序列化跟JDK自带的序列化区别为，需要采用Hessian的Input和Output实现(反)序列化。示例代码如下也很简单。
+```java
+package hessian;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+
+import com.caucho.hessian.io.Hessian2Input;
+import com.caucho.hessian.io.Hessian2Output;
+
+public class HessianMain {
+	public static void main(String[] args) {
+		//构造测试对象
+		User user = new User();
+		user.setName("bes");
+		user.setPassword("BESDev");
+		user.setAge(8);
+		
+		user.getAddress().add("BeiJing ChaoYang");
+		user.getAddress().add("SuZhou JingChang");
+		user.getAddress().add("XiAn GaoXin");
+
+		try {
+			//序列化对象
+			ByteArrayOutputStream os = new ByteArrayOutputStream();
+			Hessian2Output ho = new Hessian2Output(os);
+			ho.writeObject(user);
+			//Hessian自带缓冲，需要调用flush操作
+			ho.flush();
+			byte[] bytes = os.toByteArray();
+
+			System.out.write(bytes);
+			System.out.println();
+			System.out.println("序列化后的字节大小:" + bytes.length);
+
+			//反序列化对象
+			ByteArrayInputStream is = new ByteArrayInputStream(bytes);
+			Hessian2Input hi = new Hessian2Input(is);
+			User deUser = null;
+			deUser = (User) hi.readObject();
+			
+			System.out.println(
+					"User:[name:" + deUser.getName() + ",password:"
+			      + deUser.getPassword() + ",age:" + deUser.getAge() + "]");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+}
+
+```
+
+#### **4.2.4 protobuf序列化**
+protobuf框架的使用则需要根据protobuf协议及规定的格式定义需要序列化的对象格式。
+
+1，使用protobuf的第一步就是定义如下的格式(被称为Message)，同前两节的User类。
 ```docker
-# pull base image
-# --------------
-FROM 10.10.10.13:5000/gs.mobile.com/redhat7.2
+package bes;
+option java_package="myprotobuf";
+option java_outer_classname="UserProto";
 
-# Maintainer
-# --------------
-MAINTAINER xuqingkang  <qingkang.xu@bessystem.com>
-
-RUN echo 'root:root' | chpasswd
-
-# Environment variables required for this build
-# ---------------------------------------------
-ENV APP_PKG=saleapp.war
-ENV ORACLE_LIS_PKG=oracle.libs.tar.gz
-ENV ORACLE_HOME_DIR=/app/oracle/product/12.1.0/db
-
-ADD dockerimages/$ORACLE_LIS_PKG $ORACLE_HOME_DIR
-ADD dockerimages/$APP_PKG /app/$APP_PKG
-
-COPY dockerimages/deps/libaio-0.3.109-13.el7.x86_64.rpm /deps/libaio-0.3.109-13.el7.x86_64.rpm
-
-# Setup filesystem and wjtpss user
-#-----------------------------
-
-RUN chmod a+xr -R /wjtpss && \
-  useradd -d /wjtpss -s /bin/bash wjtpss && \
-  echo wjtpss:wjtpss | chpasswd  && \
-  chown wjtpss:wjtpss -R /wjtpss && \
-  chmod -R 755 /usr/lib64 && \
-  chmod -R 755 $ORACLE_HOME_DIR && \
-  rpm -ivh /deps/libaio-0.3.109-13.el7.x86_64.rpm
-
-USER wjtpss
-
-WORKDIR $WJTPSS_HOME
-
-ENTRYPOINT /bin/bash
+message User{
+    required int32 ID=1;
+    required string userName=2;
+    required string Password=3;
+    required int32 age=4;
+    repeated string address=5;
+}
 ```
+2，使用ptotoc命令根据proto文件生成相关语言的Message类及工具类
+
+protoc --java_out ./ User.proto
+
+3，上面protoc命令会编译出UserProto类，主要包括builder和反序列化等的工具类，如UserProto.User.Builder，代码中则使用protoc生成的代码进行序列化和反序列化。
+```java
+  /**
+   * Protobuf type {@code bes.User}
+   */
+  public  static final class User extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:bes.User)
+      UserOrBuilder {
+    // Use User.newBuilder() to construct.
+    private User(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private User() {
+      iD_ = 0;
+      userName_ = "";
+      password_ = "";
+      age_ = 0;
+      address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
+```
+4，真正使用protobuf的示例代码如下：
+```java
+package protobuf;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.protobuf.InvalidProtocolBufferException;
+
+import myprotobuf.UserProto;
+
+public class UserSerial {
+    public static void main(String[] args)
+            throws Exception {
+
+        //创建Builder并设置消息对象User的属性
+        UserProto.User.Builder builder = UserProto.User.newBuilder();
+        builder.setID(1);
+        builder.setUserName("bes");
+        builder.setPassword("BESDev");
+        builder.setAge(8);
+        List<String> address = new ArrayList<String>();
+        address.add("BeiJing ChaoYang");
+        address.add("SuZhou JingChang");
+        address.add("XiAn GaoXin");
+        builder.addAllAddress(address);
+        
+        //使用protoc生成的累build出User对象
+        UserProto.User user = builder.build();
+        
+        //序列化User对象
+        byte[] encodedBytes = user.toByteArray();
+        System.out.write(encodedBytes);
+        System.out.println();
+		System.out.println("序列化后的字节大小：" + encodedBytes.length);
+        
+        //反序列化
+        UserProto.User decodedUser = UserProto.User.parseFrom(encodedBytes);
+        System.out.println("decodedUser:[" + decodedUser +"] "
+        		+ "is equals(user):" + decodedUser.equals(user));
+
+    }
+
+}
+
+```
+#### **4.2.5 序列化简单总结**
+比较序列化前后的对象，在保证对象序列化前后一致的情况下，测试代码中会打印每次序列化的大小。
+
+如下图是简单的比较
+![avater](../images/2-distribute-serialize-summary.png)
+
 这个dockerfile是可以制作出镜像来的，其通过DOCKERFILE的ADD命令解压oracle的依赖库和和应用包到容器镜像，然后还使用了chmod修改文件权限，以及使用rpm安装aio包。
 其存在问题：因为docker镜像分层，而且按照Copy On Write的思路，当需要对文件进行修改是就会进行拷贝。这带来的问题是比如oracle.libs.tar.gz文件本身比较大，ADD之后又使用chmod命令对其权限修改为755，这个chmod会导致一次文件拷贝，就无形中增加了docker镜像大小。
 
 ## **4.3 优化版本**
-
-### 优化思路：构建文件服务器
-docker镜像文件的优化，尽量在RUN 命令中执行所有文件操作，减少文件层多余的拷贝。少用ADD和COPY命令，因此建议搭建一个文件服务器，在RUN命令中通过curl wget等命令获取文件，之后对文件进行操作。
-甚至可以把YUM源也配置为文件服务器，这样的话dockerfile中RUN命令中的yum安装也相当于从文件服务器获取文件。
-
-### **4.3.1 优化后dockerfile**
-```docker
-# pull base image
-# --------------
-FROM 10.10.10.13:5000/gs.mobile.com/redhat7.2
-
-# Maintainer
-# --------------
-MAINTAINER xuqingkang  <qingkang.xu@bessystem.com>
-
-RUN echo 'root:root' | chpasswd
-
-# Environment variables required for this build
-# ---------------------------------------------
-ENV FILE_SERVER_URL=http://10.251.50.113:8090/fileserver/dockerimages
-ENV APP_PKG=saleapp.war
-ENV ORACLE_LIS_PKG=oracle.libs.tar.gz
-ENV ORACLE_HOME_DIR=/app/oracle/product/12.1.0/db
-
-# Setup filesystem and wjtpss user
-#-----------------------------
-
-RUN curl -o /etc/yum.repos.d/rhel_fileserver.repo $FILE_SERVER_URL/rhel_fileserver.repo && \
-  yum makecache && \
-  yum -y install net-tools && \
-  yum -y install telnet && \
-  yum -y install glibc-common && \
-  yum -y install iputils && \
-  chmod a+xr -R /wjtpss && \
-  useradd -d /wjtpss -s /bin/bash wjtpss && \
-  chmod -R 755 /usr/lib64 && \
-  curl -L $FILE_SERVER_URL/$ORACLE_LIS_PKG | tar zxf - && \
-  chmod -R 755 $ORACLE_HOME_DIR && \
-  curl -O $FILE_SERVER_URL/deps/libaio-0.3.109-13.el7.x86_64.rpm && \
-  rpm -ivh /deps/libaio-0.3.109-13.el7.x86_64.rpm
-
-USER wjtpss
-
-WORKDIR $WJTPSS_HOME
-
-ENTRYPOINT /bin/bash
-```
-### **4.3.2 优化后的dockerfile有几点改进**
-1，没有使用ADD或者COPY进行文件拷贝，这样的话就算RUN命令中有chmod等命令对文件进行操作也不会导致多一级的拷贝
-
-2，配置了yum源也从文件服务器获取安装包，这样的话yum install命令可以直接运行，不需要提前拷贝安装包(xxx.rpm)
-
-3，直接通过curl获取文件并解压，进行权限变更
-
-4，直接通过curl获取rpm包之后进行安装
-
-我相信很多人都遇到过制作后的镜像会比想象中大的问题，也许这是一种简化的思路！
-
-# **5.总结**
-本期是我的ARTS,用了蹩脚的英语写完了Algorithm实现思路，而且是一个很简单的算法题！
-
-缺了Review文章点评，英文这周确实没有看文章，也实在补不了了!  
-
-我相信一年后写出来的ARTS会进步很大很大！
