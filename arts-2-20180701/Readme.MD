@@ -398,7 +398,8 @@ public class UserSerial {
 比较序列化前后的对象，在保证对象序列化前后一致的情况下，测试代码中会打印每次序列化的大小。
 
 如下图是简单的比较
-![avater](../images/2-distribute-serialize-summary.png)
+![avater](../images/2-distribute-serialize-compare.png)
+
 
 这个dockerfile是可以制作出镜像来的，其通过DOCKERFILE的ADD命令解压oracle的依赖库和和应用包到容器镜像，然后还使用了chmod修改文件权限，以及使用rpm安装aio包。
 其存在问题：因为docker镜像分层，而且按照Copy On Write的思路，当需要对文件进行修改是就会进行拷贝。这带来的问题是比如oracle.libs.tar.gz文件本身比较大，ADD之后又使用chmod命令对其权限修改为755，这个chmod会导致一次文件拷贝，就无形中增加了docker镜像大小。
