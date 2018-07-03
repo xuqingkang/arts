@@ -356,7 +356,7 @@ protoc --java_out ./ User.proto
       address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 ```
-4，真正使用protobuf的示例代码如下：
+4，真正使用protobuf的示例代码如下：与JDK序列化和hessian框架的不同之处就是序列化和反序列化操作直接使用protoc生成的UserProto类来完成。
 ```java
 package protobuf;
 
