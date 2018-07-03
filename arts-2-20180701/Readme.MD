@@ -104,7 +104,7 @@ We must declare the type of variable in strongly typed languages, this help us t
 在迁移某个应用到Docker环境时发现因为调用操作系统的getlogin()方法(sys/types.h)获取不到登录用户调用导致strcpy函数的调用直接core了。
 当时是从Redhat7.2宿主机迁移到运行Redhat7.2的Docker容器中。
 
-出问题的代码如下：getlogin() 的调用会导致core
+出问题的代码如下：getlogin() 的调用不能获取到登录用户名，没有返回值，这导致了后边的"strcpy(a,getlogin());"代码core
 ```c++
 #include <cstdio>
 #include <iostream>
@@ -118,7 +118,11 @@ int main(int argc, char *argv[])
     std::cout << "Start2,Next is getlogin() function test." << std::endl;
     std::cout << getlogin() << std::endl;
     std::cout << "Start3, Invoked getlogin() function." << std::endl;
-
+    
+    char a[30];
+    strcpy(a,getlogin());
+    std::cout << a << std::endl;
+    std::cout << "Hello world" << std::endl;
     return 0;
 }
 ```
