@@ -47,9 +47,9 @@ class Solution:
             carryDigit = 1 if tmpSum >= 10 else 0
             count += 1
 
-        ''' if length of two number list is equal, there will be no remaining digit, so just return calculated list '''
+        ''' if length of two number list is equal, there will be no remaining digit, so just process the last carry digit '''
         if len(l1List) != len(l2List):
-            """ Process the remaining digit, it has no any compute at all, just appending the digit to list """
+            """ Process the remaining digit, it is neccessary to add carryDigit to remaining digit """
             remainDigitsList = l1List if len(l1List) else l2List
             while(len(remainDigitsList)):
                 tmpSum = remainDigitsList.pop() + carryDigit
@@ -81,7 +81,7 @@ class Solution:
 ## **Notice**
 In this problem, we should notice the following:
 
-we must process the carry digit correctly,it's too easy to ignore adding to the result list.
+we must process the carry digit correctly, especially the last one. it's too easy to ignore adding to the result list.
 the code as following is ignored at my first time submission.
 ```python
         if carryDigit:
@@ -91,7 +91,11 @@ the code as following is ignored at my first time submission.
 
 # **2.Review**
 
-本周缺，强烈谴责~_~
+I read this article about "C++ Variables and Data Types", The origin url is:https://medium.com/@chrisamirani/c-variables-and-data-types-part-1-4ebda85eccf8
+
+The writer mention it is compulsory to declare to type of variable when define it. as we know c/c++、java are the strongly typed languages, and that python and go are weakly typed language.
+
+We must declare the type of variable in strongly typed languages, this help us to control memory usage precisely. eg: When we use Numeric varible, we could choose the type order by "byte->short->int->double" in c and java language, the later use more memory than before it.
 
 # **3.Tips**
 关于在Docker环境下获取操作系统登录用户名的问题，getlogin()和getuid()比较。Docker基础镜像为：yjjy0921/redhat7.2
@@ -146,9 +150,9 @@ int main() {
 
 序列化按照类别大概是如下两种序列化，一个针对字节码、一个针对格式化的字符串。
 
-1，字节码序列化：Protobuf、Hessian、Java序列化
+1，字节码序列化技术：Protobuf、Hessian、Java序列化
 
-2，Json和xml序列化：jackjson、xstream等
+2，Json和xml序列化技术：jackjson、xstream等
 
 如下图所示，在分布式环境中客户端和服务器端通信涉及到的序列化技术，其中早期的SOAP WebService实现中大量使用XML格式，后来Restful接口的Web
 Service则使用JSON格式。未来，Docker和K8S的YAML格式会不会有可能用作这种远程调用？  而基于内网的远程调用框架gRPC、Thrift、ICE、Dubbo等底层采用不同的序列化技术，而一些商用的中间件在分布式调用中则有自己的调用协议(如Weblogic T3)，底层的序列化技术很可能采用的就是以上字节码序列化技术中的一种。
@@ -400,10 +404,8 @@ public class UserSerial {
 如下图是简单的比较
 ![avater](../images/2-distribute-serialize-compare.png)
 
-关于序列化的简单思考：
-1，序列化在分布式系统中广泛使用，如gRPC远程调用框架使用的就是protobuf，Thrift分布式调用框架则有自己的序列化框架，阿里的dubbo则使用hessian序列化技术(也支持json、对protobuf进行扩展等)；
-2，序列化技术对掌握分布式技术来说是很重要的，而且对整体性能至关重要；
-3，在目前应用性能监控APM产品中，都在谈的端到端监控，在采用基于HTTP协议通信的系统之间实现相对是比较容易的。
+**关于序列化的简单思考：**
 
-而现实中很多系统之间的端到端链路监控因为存在不同的分布式通信协议，协议报文的序列化格式不同。有些系统使用了中间件自身的通信协议，这种情况在使用EJB技术的系统中尤为突出，比如要支持Weblogic下的应用则要分析T3协议。此外不同系统采用不同的分布式框架，端到端监控框架需要对主流的分布式框架进行支持。
-如果真正要实现端到端监控的话，需要对各种分布式技术的通信协议都掌握了才能实现端到端监控。比如很多
+1，序列化在分布式系统中广泛使用，如gRPC远程调用框架使用的就是protobuf，Thrift分布式调用框架则有自己的序列化框架，阿里的dubbo则使用hessian序列化技术(也支持json、对protobuf进行扩展等)；
+2，序列化技术对掌握分布式技术来说是很重要的，而且对整体性能至关重要；Weblogic中间件的EJB调用性能远高于其他基于IIOP协议的EJB框架的调用性能，其中很重要的一点就是Weblogic T3独有的序列化实现。
+3，在目前应用性能监控APM产品中，都在谈的端到端监控，在采用基于HTTP协议通信的系统之间实现相对是比较容易的。而现实中很多系统之间的端到端链路监控因为存在不同的分布式通信协议，协议报文的序列化格式不同。有些系统使用了中间件自身的通信协议，这种情况在使用EJB技术的系统中尤为突出，比如要支持Weblogic下的应用则要分析T3协议。此外不同系统采用不同的分布式框架，端到端监控框架需要对主流的分布式框架进行支持。
