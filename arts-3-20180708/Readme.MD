@@ -1,4 +1,4 @@
-This is 3rd ARTS, The Algorithm is still the difficult for me.
+This is 3rd ARTS, The Algorithm is still difficult for me.
 # **1.Algorithm**
 **Question：**
 
@@ -70,7 +70,7 @@ when i committed the right code to the leetcode, i found it's very inefficient. 
 
 I read this article about "the monitor metric data storing", The origin url is:https://blog.timescale.com/sql-nosql-data-storage-for-prometheus-devops-monitoring-postgresql-timescaledb-time-series-3cde27fd1e07
 
-As metioned in this article, as the monitoring system Google developed for Borg, and along with the popularity of Kubernetes. Promethues grabbed attention from so many developers.
+As metioned in this article, prometheus is the internal monitoring system Google developed for Borg, and along with the popularity of Kubernetes. Prometheus grabbed attention from so many developers.
 
 As we know, the metric data is large, so we must use reliable data store system to dealing the challenge of storage. 
 
@@ -81,55 +81,28 @@ If we use Docker for running my application, The more application instance, The 
 B.T.W:The grafana is good UI dashboard framework of monitor!
 
 # **3.Tips**
-关于在Docker环境下获取操作系统登录用户名的问题，getlogin()和getuid()比较。Docker基础镜像为：yjjy0921/redhat7.2
+关于Mysql数据库字符型消息存储限制问题
 
 ### **3.1 具体问题**
-在迁移某个应用到Docker环境时发现因为调用操作系统的getlogin()方法(sys/types.h)获取不到登录用户调用导致strcpy函数的调用直接core了。
-当时是从Redhat7.2宿主机迁移到运行Redhat7.2的Docker容器中。
+我们运维产品有一个功能就是作业执行，作业可以调用某台主机上的脚本，但是界面需要输出脚本的"标准输出"。而每个作业调用脚本的标准输出是需要存储到数据库中供以后查看的，这种执行了4次作业调度，但是其中有一次作业看不到在浏览器界面看不到标准输出。
 
-出问题的代码如下：getlogin() 的调用不能获取到登录用户名，没有返回值，这导致了后边的"strcpy(a,getlogin());"代码core
-```c++
-#include <cstdio>
-#include <iostream>
-#include <string.h>
-#include <sys/types.h>
-#include <unistd.h>
 
-int main(int argc, char *argv[])
-{
-    std::cout << "Start" << std::endl;
-    std::cout << "Start2,Next is getlogin() function test." << std::endl;
-    std::cout << getlogin() << std::endl;
-    std::cout << "Start3, Invoked getlogin() function." << std::endl;
-    
-    char a[30];
-    strcpy(a,getlogin());
-    std::cout << a << std::endl;
-    std::cout << "Hello world" << std::endl;
-    return 0;
-}
-```
 ### **3.2 原因分析**
- 经查与/var/run/utmp文件有关，使用docker cp命令拷贝内网宿主机上的/var/run/utmp文件到容器对应的/var/run/utmp也不行，最后的解决方法是在外网找到一个redhat7.2，拷贝/var/run/utmp文件到镜像中得以解决。
-但这不是最终解决方案，最后在stackoverflow上发现如果一定需要获取登录用户的话建议代码调整为通过getuid方法获取。getlogin()是一个不安全的方法，不推荐，详见：https://stackoverflow.com/questions/4785126/getlogin-c-function-returns-null-and-error-no-such-file-or-directory。
+通过分析作业标准输出的流向:执行作业(调用脚本)的主机->数据库->界面。很容易想到查看执行作业主机上的代理端的日志，通过分析一下子找到原因，日志中有明显的字段超限错误：
+
+```python
+MysqlDataTruncation: Data Truncation: Data too long for column "xxx" at row 1
+```
 
 ### **3.3 解决方案**
-建议参照如下样例代码调整，采用getuid方法可以很有效的规避getlogin方法受/var/run/utmp文件影响，以及存在的安全性问题：
+产品开发后运行两三年了，没有想到标准输出居然超限了，产品发布上线后数据库中对应的字段类型为Text。后来仔细看了Mysql的手册，发现TEXT最大可接受的是2^16(65536)字节，因此就当场就把数据库字段类型从TEXT变为MEDIUMTEXT(2^24)
 ```python
 
-#include <unistd.h>
-#include <stdio.h>
-#include <pwd.h>
-#include <sys/types.h>
-int main() {
-   char *name;
-   struct passwd *pass;
-   pass = getpwuid(getuid());
-   name = pass->pw_name;
-   printf("This is the login name: %s\n", name);
-   return 0;
-}
+ALTER TABLE xxx MODIFY COLUMN yyy MEDIUMTEXT BINARY NULL;
 ```
+
+MYSQL字符型字段存储的空间大小如下所示：
+![avater](../images/3-mysql-string-type-storageSize.png)
 
 # **4.浅谈序列化技术**
 ### **4.1 序列化比较**
