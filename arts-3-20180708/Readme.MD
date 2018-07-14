@@ -104,270 +104,126 @@ ALTER TABLE xxx MODIFY COLUMN yyy MEDIUMTEXT BINARY NULL;
 MYSQL字符、数字、时间字段存储的空间大小要求如下所示：
 ![avater](../images/3-mysql-string-type-storageSize.png)
 
-# **4.浅谈序列化技术**
-### **4.1 序列化比较**
-这次以Java为例，谈一下序列化的场景。
+# **4.Share(浅谈配置管理工具)**
 
-序列化按照类别大概是如下两种序列化，一个针对字节码、一个针对格式化的字符串。
+对于我们日常运维来说，如果是一两台或者几台机器运维的话，可能我们要操作的时候通过登陆每台机器进行配置，或者是通过ssh去做批量配置。但如果机器数量大几十上百成千台的时候还采用这种方式效率就难以想象了。因此我们一般都需要引入专门的配置管理软件。
+目前流行的有Puppet(使用ruby开发)、Chef(使用ruby开发)、Ansible(使用python开发)、SaltStack(使用python开发)等。
+工具的管理分为有代理(Agent)和无代理模式(Agentless):
 
-1，字节码序列化技术：Protobuf、Hessian、Java序列化
+1,代理(Agent)模式：有一个代理进程运行在被监控端，接收服务端的命令完成配置管理工作。
 
-2，Json和xml序列化技术：jackjson、xstream等
+2,无代理(Agentless)模式：不需要在远程主机上安装client/agents，因为它们是基于ssh或其他服务(消息中间件)来和远程主机通讯的。
 
-如下图所示，在分布式环境中客户端和服务器端通信涉及到的序列化技术，其中早期的SOAP WebService实现中大量使用XML格式，后来Restful接口的Web
-Service则使用JSON格式。未来，Docker和K8S的YAML格式会不会有可能用作这种远程调用？  而基于内网的远程调用框架gRPC、Thrift、ICE、Dubbo等底层采用不同的序列化技术，而一些商用的中间件在分布式调用中则有自己的调用协议(如Weblogic T3)，底层的序列化技术很可能采用的就是以上字节码序列化技术中的一种。
+### **4.1 Puppet**
+Puppet是开源的基于Ruby的系统配置管理工具，依赖于C/S的部署架构。Puppet视配置文件、用户、软件包、系统服务等为“资源”。每种资源都有对应的属性，如软件包有安装不安装的属性，文件有权限属性等。Puppet的代码主要由这些资源和其属性组成。
 
-![avater](../images/2-distribute-serialize-summary.png)
+#### **4.1.1 Puppet数据流如下所示：
+![avater](../images/3-S-puppet-dataFlow.png)
 
-### **4.2 各种序列化框架的使用方法**
-#### **4.2.1 序列化对象概述**
-我们本次使用序列化采用如下Java代码示例的User对象，其有名称、密码、年龄、地址(可多个)属性。
+#### **4.1.2 Puppet的简单使用如下图所示：
 
-```java
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+主要展示文件同步的实现
+![avater](../images/3-S-puppet-useFlow.png)
 
-public class User implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
-	private String name;
-	private String password;
-	private int age;
-	private List<String> address = new ArrayList<String>();
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public List<String> getAddress() {
-		return address;
-	}
-	public void setAddress(List<String> address) {
-		this.address = address;
-	}
+#### **4.1.3 Puppet常用的资源管理类定义
+这些资源定义主要书写在".pp"为后缀文件中即可
+
+-文件推送定义：如下为要求所有主机需要同步服务器上的my.cf文件到/etc/mysql/my.cnf
+```python
+file { 
+    "/etc/mysql/my.cnf": 
+    source => "puppet:///mysql-server/my.cnf", 
+    owner => root, 
+    group => root, 
+    mode => 0644;        
 }
 ```
-
-我们的测试代码中，将会使用具备相同属性值的对象，会简单比较序列化字节数大小及使用方法。
-```java
-		// 构造测试对象
-		User user = new User();
-		user.setName("bes");
-		user.setPassword("BESDev");
-		user.setAge(8);
-		
-		user.getAddress().add("BeiJing ChaoYang");
-		user.getAddress().add("SuZhou JingChang");
-		user.getAddress().add("XiAn GaoXin");
-```
-
-#### **4.2.2 JDK序列化**
-JDK的序列化使用是最简单的，只需要保证需要序列化的类实现java.io.Serializable接口后，使用java.io.ObjectOutputStream类的writeObject和readObject便可以实现序列化和反序列化，如下示例代码：
-```java
-package serialize;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-
-import hessian.User;
-
-public class JDKSerializeMain {
-	public static void main(String[] args) throws Exception {
-		// 构造测试对象
-		User user = new User();
-		user.setName("bes");
-		user.setPassword("BESDev");
-		user.setAge(8);
-		
-		user.getAddress().add("BeiJing ChaoYang");
-		user.getAddress().add("SuZhou JingChang");
-		user.getAddress().add("XiAn GaoXin");
-
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		ObjectOutputStream objectOut = null;
-		try {
-			objectOut = new ObjectOutputStream(output);
-			objectOut.writeObject(user);
-			objectOut.close();
-			output.close();
-
-			System.out.write(output.toByteArray());
-			System.out.println();
-			System.out.println("序列化后的字节大小：" + output.toByteArray().length);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-}
-
-```
-#### **4.2.3 Hessian序列化**
-Hessian序列化跟JDK自带的序列化区别为，需要采用Hessian的Input和Output实现(反)序列化。示例代码如下也很简单。
-```java
-package hessian;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-
-import com.caucho.hessian.io.Hessian2Input;
-import com.caucho.hessian.io.Hessian2Output;
-
-public class HessianMain {
-	public static void main(String[] args) {
-		//构造测试对象
-		User user = new User();
-		user.setName("bes");
-		user.setPassword("BESDev");
-		user.setAge(8);
-		
-		user.getAddress().add("BeiJing ChaoYang");
-		user.getAddress().add("SuZhou JingChang");
-		user.getAddress().add("XiAn GaoXin");
-
-		try {
-			//序列化对象
-			ByteArrayOutputStream os = new ByteArrayOutputStream();
-			Hessian2Output ho = new Hessian2Output(os);
-			ho.writeObject(user);
-			//Hessian自带缓冲，需要调用flush操作
-			ho.flush();
-			byte[] bytes = os.toByteArray();
-
-			System.out.write(bytes);
-			System.out.println();
-			System.out.println("序列化后的字节大小:" + bytes.length);
-
-			//反序列化对象
-			ByteArrayInputStream is = new ByteArrayInputStream(bytes);
-			Hessian2Input hi = new Hessian2Input(is);
-			User deUser = null;
-			deUser = (User) hi.readObject();
-			
-			System.out.println(
-					"User:[name:" + deUser.getName() + ",password:"
-			      + deUser.getPassword() + ",age:" + deUser.getAge() + "]");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-}
-
-```
-
-#### **4.2.4 protobuf序列化**
-protobuf框架的使用则需要根据protobuf协议及规定的格式定义需要序列化的对象格式。
-
-1，使用protobuf的第一步就是定义如下的格式(被称为Message)，同前两节的User类。
-```docker
-package bes;
-option java_package="myprotobuf";
-option java_outer_classname="UserProto";
-
-message User{
-    required int32 ID=1;
-    required string userName=2;
-    required string Password=3;
-    required int32 age=4;
-    repeated string address=5;
+-软件包安装：
+```python
+package { 
+      ["nginx","mysql-server"]: 
+      ensure => installed; 
+      ["vim"]: 
+      ensure => absent; 
 }
 ```
-2，使用ptotoc命令根据proto文件生成相关语言的Message类及工具类
-
-protoc --java_out ./ User.proto
-
-3，上面protoc命令会编译出UserProto类，主要包括builder和反序列化等的工具类，如UserProto.User.Builder，代码中则使用protoc生成的代码进行序列化和反序列化。
-```java
-  /**
-   * Protobuf type {@code bes.User}
-   */
-  public  static final class User extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:bes.User)
-      UserOrBuilder {
-    // Use User.newBuilder() to construct.
-    private User(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private User() {
-      iD_ = 0;
-      userName_ = "";
-      password_ = "";
-      age_ = 0;
-      address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-    }
+-执行cron定时任务
+```python
+cron{  
+ "ntpdate":  
+  command => "/usr/sbin/ntpdate pool.ntp.org",  
+  user => root,  
+  hour => 0,  
+  minute => 0,  
+  } 
 ```
-4，真正使用protobuf的示例代码如下：与JDK序列化和hessian框架的不同之处就是序列化和反序列化操作直接使用protoc生成的UserProto类来完成。
-```java
-package protobuf;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.protobuf.InvalidProtocolBufferException;
-
-import myprotobuf.UserProto;
-
-public class UserSerial {
-    public static void main(String[] args)
-            throws Exception {
-
-        //创建Builder并设置消息对象User的属性
-        UserProto.User.Builder builder = UserProto.User.newBuilder();
-        builder.setID(1);
-        builder.setUserName("bes");
-        builder.setPassword("BESDev");
-        builder.setAge(8);
-        List<String> address = new ArrayList<String>();
-        address.add("BeiJing ChaoYang");
-        address.add("SuZhou JingChang");
-        address.add("XiAn GaoXin");
-        builder.addAllAddress(address);
-        
-        //使用protoc生成的累build出User对象
-        UserProto.User user = builder.build();
-        
-        //序列化User对象
-        byte[] encodedBytes = user.toByteArray();
-        System.out.write(encodedBytes);
-        System.out.println();
-		System.out.println("序列化后的字节大小：" + encodedBytes.length);
-        
-        //反序列化
-        UserProto.User decodedUser = UserProto.User.parseFrom(encodedBytes);
-        System.out.println("decodedUser:[" + decodedUser +"] "
-        		+ "is equals(user):" + decodedUser.equals(user));
-
-    }
-
-}
-
+-执行固定命令
+```python
+exec {  
+  "/tmp/nginx_install.sh":  
+  cwd => "/tmp",  
+  user => root,  
+  path => ["/usr/bin","/usr/sbin","/bin","/bin/sh"],  
+  }
 ```
-#### **4.2.5 序列化简单总结**
-比较序列化前后的对象，在保证对象序列化前后一致的情况下，测试代码中会打印每次序列化的大小。
 
-如下图是简单的比较
-![avater](../images/2-distribute-serialize-compare.png)
 
-**关于序列化的简单思考：**
+### **4.2 Chef**
+类似Puppet的配置管理工具，也视配置文件、用户、软件包、系统服务等为“资源”。
 
-1，序列化在分布式系统中广泛使用，如gRPC远程调用框架使用的就是protobuf，Thrift分布式调用框架则有自己的序列化框架，阿里的dubbo则使用hessian序列化技术(也支持json、对protobuf进行扩展等)；
+#### **4.2.1 Chef架构和简单说明如下所示：
+![avater](../images/3-S-chef-dataFlow.png)
 
-2，序列化技术对掌握分布式技术来说是很重要的，而且对整体性能至关重要；Weblogic中间件的EJB调用性能远高于其他基于IIOP协议的EJB框架的调用性能，其中很重要的一点就是Weblogic T3独有的序列化实现。
+#### **4.2.2 Chef的简单使用如下图所示：
 
-3，在目前应用性能监控APM产品中，都在谈的端到端监控，在采用基于HTTP协议通信的系统之间实现相对是比较容易的。而现实中很多系统之间的端到端链路监控因为存在不同的分布式通信协议，协议报文的序列化格式不同。有些系统使用了中间件自身的通信协议，这种情况在使用EJB技术的系统中尤为突出，比如要支持Weblogic下的应用则要分析T3协议。此外不同系统采用不同的分布式框架，端到端监控框架需要对主流的分布式框架进行支持。
+可以通过查看下图中文件配置和命令执行，也基本可以看出和Puppet有几分神似。
+![avater](../images/3-S-chef-useFlow.png)
+
+
+### **4.3 Ansible**
+Ansible被定义为一个模型驱动的配置管理器，支持多节点发布、远程任务执行。默认使用 SSH 进行远程连接。
+Ansible无需在被管理节点上安装附加软件，可使用各种编程语言进行扩展。轻量可能成为Ansible流行的最大原因之一。
+
+#### **4.3.1 必须说明的基础概念：
+Host Inventory：指定操作的主机,是一个配置文件里面定义监控的主机。需要被管理的主机定义在该文件中。
+PlayBooks ： 定义编排任务，由ansible自动执行一系列命令。命令组成PlayBook
+Module：Ping,command,user,yum等等模块，通过模块完成相应管理工作。
+连接方式：管理端(也就是运行ansible命令的机器)通过local 、ssh、zeromq 三种方式连接被管理端，默认使用基于ssh的连接。
+
+#### **4.3.2 Ansible基本使用：
+
+Ansible的使用是最简单，在安装完成之后默认就有command这样的模块存在，所以只需要把被管主机添加进来便可以远程执行命令。
+真是相当方便，要想马上感知的话只需要下面两条命令。
+
+1，配置hosts文件,定义组和相应主机：如下在管理主机上定义了两个主机组
+```python
+vi /etc/ansible/hosts
+---------------------
+[webservers]
+rhel7161
+rhel7160
+[dummy_group]
+192.168.1.111
+192.168.1.112
+```
+
+2，在管理主机通过ansible执行远程命令，如下图所示在所有主机上查询jdk的版本信息：
+![avater](../images/3-S-ansible-useFlow.png)
+
+#### **4.3.3 Ansible深度定制安装配置：
+如果需要执行安装操作的话，可以更细粒度的编排来完成，如下图为定义tomcat的安装：
+![avater](../images/3-S-ansible-deepUsage.png)
+
+### **4.4 Salt**
+这次对Salt看得比较浅，也没有搭建成功测试环境，但给出下面的图示展示Salt的使用，可以看出使用也是比较简单的。
+![avater](../images/3-S-salt-useFlow.png)
+
+#### **4.5 分布式配置总结**
+在面对批量配置的工作，我推测ansible的使用现在应该是最流行的。
+在很多公司都有自己的配置框架，有些是基于以上开源产品其中之一进行搭建。
+也有自行开发远程配置框架完成如下工作的：
+1，批量作业执行
+2，批量软件(特别是中间件)安装和配置
+3，自动巡检(基于远程作业实现主机存储空间，CPU，内存等的自动巡检)
+
+国内也有腾讯蓝鲸这样的平台。
