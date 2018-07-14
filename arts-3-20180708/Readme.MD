@@ -101,7 +101,7 @@ MysqlDataTruncation: Data Truncation: Data too long for column "xxx" at row 1
 ALTER TABLE xxx MODIFY COLUMN yyy MEDIUMTEXT BINARY NULL;
 ```
 
-MYSQL字符型字段存储的空间大小如下所示：
+MYSQL字符、数字、时间字段存储的空间大小要求如下所示：
 ![avater](../images/3-mysql-string-type-storageSize.png)
 
 # **4.浅谈序列化技术**
