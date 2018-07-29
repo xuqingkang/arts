@@ -11,7 +11,7 @@ This is 5th ARTS, The Algorithm is still difficult for me again and again.
 
 ![image](../images/5-T-request-stream.png)
 
-[^_^]:下面是上图的markdown源码，发现浏览器不支持，网易笔记上是支持的。可不予理会
+**下面是上图的markdown源码，发现浏览器不支持，网易笔记上是支持的。可不予理会**
 
   ```
   sequenceDiagram
@@ -22,7 +22,7 @@ This is 5th ARTS, The Algorithm is still difficult for me again and again.
 采用了常规的负载均衡，请求在70多台机器的700多个实例上流转，类如下图，**Bx**是web实例集群，**Cx**是app实例集群。
 ![image](../images/5-T-request-lb.png)
 
-[^_^]:下面是上图的markdown源码，发现浏览器不支持，网易笔记上是支持的。可不予理会
+**下面是上图的markdown源码，发现浏览器不支持，网易笔记上是支持的。可不予理会**
   ```
   graph TD
   浏览器-->负载均衡器
