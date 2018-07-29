@@ -10,29 +10,32 @@ This is 5th ARTS, The Algorithm is still difficult for me again and again.
 **背景**：我们在生产环境对应用进行测试，架构相对比较复杂，涉及到很多个业务系统。运行了几百个中间件实例，大的架构方面：**浏览器**<->**web实例的中间件**(类似Tomcat)<->**app实例的中间件**(类似Tomcat)，这里边有大量的AJAX请求。
 
 ![image](../images/5-T-request-stream.png)
-附上上图的markdown源码：这个网易笔记支持！
-```
-sequenceDiagram
-浏览器->>web实例: http请求获取
-web实例->>app实例: 构造http请求!
-```
+
+[^_^]:
+
+  ```
+  sequenceDiagram
+  浏览器->>web实例: http请求获取
+  web实例->>app实例: 构造http请求!
+  ```
 
 采用了常规的负载均衡，请求在70多台机器的700多个实例上流转，类如下图，**Bx**是web实例集群，**Cx**是app实例集群。
 ![image](../images/5-T-request-lb.png)
-附上上图的markdown源码：这个网易笔记支持！
-```
-graph TD
-浏览器-->负载均衡器
-负载均衡器-->B1
-负载均衡器-->B2
-B1-->C1
-B1-->C2
-B1-->C3
-B2-->C1
-B2-->C2
-B2-->C3
 
-```
+[^_^]:
+  ```
+  graph TD
+  浏览器-->负载均衡器
+  负载均衡器-->B1
+  负载均衡器-->B2
+  B1-->C1
+  B1-->C2
+  B1-->C3
+  B2-->C1
+  B2-->C2
+  B2-->C3
+
+  ```
 
 **防乱码准备工作**：我们给Tomcat中间件配置了uriEncoding=UTF-8、useBodyEncodingForURI=true、默认的contentType为text/html;charset=UTF-8等。并**抽查了**多数中间件实例的JVM参数，放心地以为全是file.encoding=UTF-8。此外，应用中也有很多配置请求参数和相应参数编码的配置。
 
