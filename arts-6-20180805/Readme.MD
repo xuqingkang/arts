@@ -55,60 +55,60 @@ class Solution:
 At the first time,  I made a mistake that use the "/"(division) other than the "//"(exact division).
 
 # 2.Review
-Today i read an artical about ¡°Practical Advice for Women Beginning Their Computer Science Degree¡± the link is: https://medium.com/@NSallakAnderson/practical-advice-for-women-beginning-their-computer-science-degree-6bfb09197a7b
+Today i read an artical about â€œPractical Advice for Women Beginning Their Computer Science Degreeâ€ the link is: https://medium.com/@NSallakAnderson/practical-advice-for-women-beginning-their-computer-science-degree-6bfb09197a7b
 
-In this artical, i studied some useful sentence, eg£º
-- As August winds down£º means It's time for staring classes.
+In this artical, i studied some useful sentence, egï¼š
+- As August winds downï¼š means It's time for staring classes.
 - It was a while ago, but often it feels like yesterday. : means someone can clearly remember something.
 - For I too was in your shoes: means someone think about the feelings of others.
 
 # 3.Tips
-Í¬ÊÂÔÚÊµÊ©µÄÊ±ºòÓöµ½Ò»¸ö´óĞ¡Îª60TµÄ´ÅÅÌ£¬²úÆ·ËäËµºÄ´æ´¢¿Õ¼ä£¬µ«Ö®Ç°¿Í»§Ò»°ã¶¼¸ø·Ö²¼Ê½´æ´¢£¬»òÕßÊÇ×î´ó²»³¬¹ı2TµÄ´æ´¢ÅÌ¡£¿´µ½60TÎÒÃÇ¶¼±È½Ï¸ĞÌ¾ËµÕâ¿Í»§ÕæºÀ£¡µ«ÒòµÚÒ»´ÎÓöµ½ÕâÖÖ»¹ĞèÒª×Ô¼º¸ñÊ½»¯µÄÅÌ£¬ËùÒÔÓĞµããÂ±ÆÁË£¬¶ÔÓÚÕâÑù´ó´æ´¢¿Õ¼äµÄÅÌÔõÃ´¸ñÊ½»¯£¬Ñ¡ÔñÊ²Ã´ÀàĞÍ£¿¶¼³ÉÎªÎÊÌâ£¬ºóÀ´²éÑ¯×ÊÁÏ¡£
+åŒäº‹åœ¨å®æ–½çš„æ—¶å€™é‡åˆ°ä¸€ä¸ªå¤§å°ä¸º60Tçš„ç£ç›˜ï¼Œäº§å“è™½è¯´è€—å­˜å‚¨ç©ºé—´ï¼Œä½†ä¹‹å‰å®¢æˆ·ä¸€èˆ¬éƒ½ç»™åˆ†å¸ƒå¼å­˜å‚¨ï¼Œæˆ–è€…æ˜¯æœ€å¤§ä¸è¶…è¿‡2Tçš„å­˜å‚¨ç›˜ã€‚çœ‹åˆ°60Tæˆ‘ä»¬éƒ½æ¯”è¾ƒæ„Ÿå¹è¯´è¿™å®¢æˆ·çœŸè±ªï¼ä½†å› ç¬¬ä¸€æ¬¡é‡åˆ°è¿™ç§è¿˜éœ€è¦è‡ªå·±æ ¼å¼åŒ–çš„ç›˜ï¼Œæ‰€ä»¥æœ‰ç‚¹æ‡µé€¼äº†ï¼Œå¯¹äºè¿™æ ·å¤§å­˜å‚¨ç©ºé—´çš„ç›˜æ€ä¹ˆæ ¼å¼åŒ–ï¼Œé€‰æ‹©ä»€ä¹ˆç±»å‹ï¼Ÿéƒ½æˆä¸ºé—®é¢˜ï¼Œåæ¥æŸ¥è¯¢èµ„æ–™ã€‚
 
-Éæ¼°µ½Á½·½Ãæ£¬Ò»ÊÇ·ÖÇøÀàĞÍ£¨£Í£Â£ÒºÍ£Ç£Ğ£Ô£©£¬Ò»ÖÖÊÇÎÄ¼şÀàĞÍ£¨ext4 xfsµÈ£©
+æ¶‰åŠåˆ°ä¸¤æ–¹é¢ï¼Œä¸€æ˜¯åˆ†åŒºç±»å‹ï¼ˆï¼­ï¼¢ï¼²å’Œï¼§ï¼°ï¼´ï¼‰ï¼Œä¸€ç§æ˜¯æ–‡ä»¶ç±»å‹ï¼ˆext4 xfsç­‰ï¼‰
 
-MBR: MBRÖ»Ö§³Ö×î¶à4¸öÖ÷·ÖÇø£¬Èç¹ûĞèÒª¸ü¶à·ÖÇøµÄ»°£¬ĞèÒªÔÚ´ÅÅÌÉÏĞÂ½¨À©Õ¹·ÖÇø(extended partition)£¬ and only works with disks up to 2 TB in size.
+MBR: MBRåªæ”¯æŒæœ€å¤š4ä¸ªä¸»åˆ†åŒºï¼Œå¦‚æœéœ€è¦æ›´å¤šåˆ†åŒºçš„è¯ï¼Œéœ€è¦åœ¨ç£ç›˜ä¸Šæ–°å»ºæ‰©å±•åˆ†åŒº(extended partition)ï¼Œ and only works with disks up to 2 TB in size.
 
-GPT: GPTÔòÖ§³Ö¸ü¶àµÄ·ÖÇøÊıÁ¿£¬ÆäÖ§³ÖµÄÎÄ¼şÏµÍ³´óĞ¡È¡¾öÓÚ²Ù×÷ÏµÍ³ºÍÎÄ¼şÀàĞÍ£¬ÈçÏÂÎªÒÔRedhat5~7ÎªÀıÖ÷ÒªÎÄ¼şÏµÍ³ÀàĞÍ¶ÔÓ¦µÄsize´óĞ¡¡£
+GPT: GPTåˆ™æ”¯æŒæ›´å¤šçš„åˆ†åŒºæ•°é‡ï¼Œå…¶æ”¯æŒçš„æ–‡ä»¶ç³»ç»Ÿå¤§å°å–å†³äºæ“ä½œç³»ç»Ÿå’Œæ–‡ä»¶ç±»å‹ï¼Œå¦‚ä¸‹ä¸ºä»¥Redhat5~7ä¸ºä¾‹ä¸»è¦æ–‡ä»¶ç³»ç»Ÿç±»å‹å¯¹åº”çš„sizeå¤§å°ã€‚
 
 Filesystem | RHEL 5 | RHEL 6 |  RHEL 7 |
 ---|---|---|---|
-EXT2/3 | 8TiB (5.0), 16TiB (5.1+) | 16TiB |¡¡16TiB
-EXT4 | 16TiB [1EiB] (5.6+) | 16TiB |¡¡50TiB [1EiB]
-XFS | 100TiB [16EiB] | 300TiB [16EiB] |¡¡500TiB [16EiB]
+EXT2/3 | 8TiB (5.0), 16TiB (5.1+) | 16TiB |ã€€16TiB
+EXT4 | 16TiB [1EiB] (5.6+) | 16TiB |ã€€50TiB [1EiB]
+XFS | 100TiB [16EiB] | 300TiB [16EiB] |ã€€500TiB [16EiB]
 
-»ùÓÚÒÔÉÏ·ÖÎö£¬60TµÄÓ²ÅÌÔÚ·ÖÇøÊÇĞèÒªÖ¸¶¨Îª"GPT"ÀàĞÍ£¬²¢Ñ¡Ôñ"XFS"ÎÄ¼şÏµÍ³ÀàĞÍ¡£
+åŸºäºä»¥ä¸Šåˆ†æï¼Œ60Tçš„ç¡¬ç›˜åœ¨åˆ†åŒºæ˜¯éœ€è¦æŒ‡å®šä¸º"GPT"ç±»å‹ï¼Œå¹¶é€‰æ‹©"XFS"æ–‡ä»¶ç³»ç»Ÿç±»å‹ã€‚
 
-ÈçÏÂÎªÑùÀı£ºÕâÀïÎªÁËÑİÊ¾Ä¿µÄ£¬Ñ¡ÔñÁËÒ»¸ö1G´óĞ¡µÄĞÂÔö¼Ó´ÅÅÌ½øĞĞ²Ù×÷
+å¦‚ä¸‹ä¸ºæ ·ä¾‹ï¼šè¿™é‡Œä¸ºäº†æ¼”ç¤ºç›®çš„ï¼Œé€‰æ‹©äº†ä¸€ä¸ª1Gå¤§å°çš„æ–°å¢åŠ ç£ç›˜è¿›è¡Œæ“ä½œ
 
-µÚÒ»²½£ºparted¶Ô/dev/sdb´ÅÅÌ½øĞĞ¸ñÊ½»¯
+ç¬¬ä¸€æ­¥ï¼špartedå¯¹/dev/sdbç£ç›˜è¿›è¡Œæ ¼å¼åŒ–
 
 ```
 [root@rhel7 ~]# parted /dev/sdb
 GNU Parted 3.1
-Ê¹ÓÃ /dev/sdb
+ä½¿ç”¨ /dev/sdb
 Welcome to GNU Parted! Type 'help' to view a list of commands.
 (parted) mklabel                                                          
-ĞÂµÄ´ÅÅÌ±êÇ©ÀàĞÍ£¿ gpt                    #ÕâÀïÔÚmklabelÊ±Ñ¡Ôñgpt                                
-(parted) mkpart                         #¿ªÊ¼·ÖÇø                              
-·ÖÇøÃû³Æ£¿  []? gpt1
-ÎÄ¼şÏµÍ³ÀàĞÍ£¿  [ext2]? xfs                                               
-ÆğÊ¼µã£¿ 0                                                                
-½áÊøµã£¿ 1G                                                               
-¾¯¸æ: The resulting partition is not properly aligned for best performance.
-ºöÂÔ/Ignore/·ÅÆú/Cancel? I                                                
-(parted) print                          #²é¿´·ÖÇøĞÅÏ¢                                  
+æ–°çš„ç£ç›˜æ ‡ç­¾ç±»å‹ï¼Ÿ gpt                    #è¿™é‡Œåœ¨mklabelæ—¶é€‰æ‹©gpt                                
+(parted) mkpart                         #å¼€å§‹åˆ†åŒº                              
+åˆ†åŒºåç§°ï¼Ÿ  []? gpt1
+æ–‡ä»¶ç³»ç»Ÿç±»å‹ï¼Ÿ  [ext2]? xfs                                               
+èµ·å§‹ç‚¹ï¼Ÿ 0                                                                
+ç»“æŸç‚¹ï¼Ÿ 1G                                                               
+è­¦å‘Š: The resulting partition is not properly aligned for best performance.
+å¿½ç•¥/Ignore/æ”¾å¼ƒ/Cancel? I                                                
+(parted) print                          #æŸ¥çœ‹åˆ†åŒºä¿¡æ¯                                  
 Model: VMware, VMware Virtual S (scsi)
 Disk /dev/sdb: 1074MB
 Sector size (logical/physical): 512B/512B
 Partition Table: gpt
 Disk Flags: 
 
-Number  Start   End     Size    File system  Name  ±êÖ¾
+Number  Start   End     Size    File system  Name  æ ‡å¿—
  1      17.4kB  1074MB  1074MB               gpt1
 ```
 
-µÚ¶ş²½£ºÊ¹ÓÃ²Ù×÷ÏµÍ³µÄmkfs¸ñÊ½»¯ÎÄ¼şÎªxfsÀàĞÍ
+ç¬¬äºŒæ­¥ï¼šä½¿ç”¨æ“ä½œç³»ç»Ÿçš„mkfsæ ¼å¼åŒ–æ–‡ä»¶ä¸ºxfsç±»å‹
 
 ```
 [root@rhel7 ~]# mkfs -t xfs /dev/sdb1
@@ -123,31 +123,31 @@ log      =internal log           bsize=4096   blocks=853, version=2
 realtime =none                   extsz=4096   blocks=0, rtextents=0
 
 ```
-²é¿´¸ñÊ½»¯µÄ½á¹û£¬¿ÉÒÔ¿´µ½ĞÂÔö¼ÓµÄsdb
+æŸ¥çœ‹æ ¼å¼åŒ–çš„ç»“æœï¼Œå¯ä»¥çœ‹åˆ°æ–°å¢åŠ çš„sdb
 
 ```
 [root@rhel7 ~]# fdisk -l
 
-´ÅÅÌ /dev/sda£º64.4 GB, 64424509440 ×Ö½Ú£¬125829120 ¸öÉÈÇø
-Units = ÉÈÇø of 1 * 512 = 512 bytes
-ÉÈÇø´óĞ¡(Âß¼­/ÎïÀí)£º512 ×Ö½Ú / 512 ×Ö½Ú
-I/O ´óĞ¡(×îĞ¡/×î¼Ñ)£º512 ×Ö½Ú / 512 ×Ö½Ú
-´ÅÅÌ±êÇ©ÀàĞÍ£ºdos
-´ÅÅÌ±êÊ¶·û£º0x000dfcd6
+ç£ç›˜ /dev/sdaï¼š64.4 GB, 64424509440 å­—èŠ‚ï¼Œ125829120 ä¸ªæ‰‡åŒº
+Units = æ‰‡åŒº of 1 * 512 = 512 bytes
+æ‰‡åŒºå¤§å°(é€»è¾‘/ç‰©ç†)ï¼š512 å­—èŠ‚ / 512 å­—èŠ‚
+I/O å¤§å°(æœ€å°/æœ€ä½³)ï¼š512 å­—èŠ‚ / 512 å­—èŠ‚
+ç£ç›˜æ ‡ç­¾ç±»å‹ï¼šdos
+ç£ç›˜æ ‡è¯†ç¬¦ï¼š0x000dfcd6
 
-   Éè±¸ Boot      Start         End      Blocks   Id  System
+   è®¾å¤‡ Boot      Start         End      Blocks   Id  System
 /dev/sda1   *        2048     1026047      512000   83  Linux
 /dev/sda2         1026048   125829119    62401536   8e  Linux LVM
 WARNING: fdisk GPT support is currently new, and therefore in an experimental phase. Use at your own discretion.
 
-´ÅÅÌ /dev/sdb£º1073 MB, 1073741824 ×Ö½Ú£¬2097152 ¸öÉÈÇø
-Units = ÉÈÇø of 1 * 512 = 512 bytes
-ÉÈÇø´óĞ¡(Âß¼­/ÎïÀí)£º512 ×Ö½Ú / 512 ×Ö½Ú
-I/O ´óĞ¡(×îĞ¡/×î¼Ñ)£º512 ×Ö½Ú / 512 ×Ö½Ú
-´ÅÅÌ±êÇ©ÀàĞÍ£ºgpt
+ç£ç›˜ /dev/sdbï¼š1073 MB, 1073741824 å­—èŠ‚ï¼Œ2097152 ä¸ªæ‰‡åŒº
+Units = æ‰‡åŒº of 1 * 512 = 512 bytes
+æ‰‡åŒºå¤§å°(é€»è¾‘/ç‰©ç†)ï¼š512 å­—èŠ‚ / 512 å­—èŠ‚
+I/O å¤§å°(æœ€å°/æœ€ä½³)ï¼š512 å­—èŠ‚ / 512 å­—èŠ‚
+ç£ç›˜æ ‡ç­¾ç±»å‹ï¼šgpt
 ```
 
-ĞÂ½¨Ò»¸öÎÄ¼şÄ¿Â¼Èç/gptdisk£¬È»ºó°ÑÆäÓëĞÂ½¨µÄxfsÀàĞÍµÄ´ÅÅÌ·ÖÇø/dev/sdb1½øĞĞmount£¬±ã¿ÉÒÔ½øĞĞÎÄ¼ş²Ù×÷¡£
+æ–°å»ºä¸€ä¸ªæ–‡ä»¶ç›®å½•å¦‚/gptdiskï¼Œç„¶åæŠŠå…¶ä¸æ–°å»ºçš„xfsç±»å‹çš„ç£ç›˜åˆ†åŒº/dev/sdb1è¿›è¡Œmountï¼Œä¾¿å¯ä»¥è¿›è¡Œæ–‡ä»¶æ“ä½œã€‚
 
 ```
 [root@rhel7 ~]# mkdir /gptdisk
@@ -162,42 +162,42 @@ app  bin  boot  dev  etc  gptdisk  home  lib  lib64  media  mnt  opt  proc  root
 
 
 
-# 4.Share(StormÈëÃÅË¼¿¼)
+# 4.Share(Stormå…¥é—¨æ€è€ƒ)
 
-## 4.1 Storm»ù±¾¸ÅÄî
-Storm×÷Îª´óÊı¾İ´¦Àí¿ò¼ÜÖ®Ò»£¬ÆäºÍSparkÒ»Ñù¾ßÓĞ·Ç³£¹ã·ºµÄÊ¹ÓÃ,ÈçÏÂÎªStormµÄ¼Ü¹¹Í¼£º
+## 4.1 StormåŸºæœ¬æ¦‚å¿µ
+Stormä½œä¸ºå¤§æ•°æ®å¤„ç†æ¡†æ¶ä¹‹ä¸€ï¼Œå…¶å’ŒSparkä¸€æ ·å…·æœ‰éå¸¸å¹¿æ³›çš„ä½¿ç”¨,å¦‚ä¸‹ä¸ºStormçš„æ¶æ„å›¾ï¼š
 ![image](../images/6-S-storm-architecture.png)
 
- ÔÚÁË½â¼¯ÈºÅäÖÃ°²×°Ö®Ç°ĞèÒªÕÆÎÕÈçÏÂ¼¸¸ö¸ÅÄî(concept):
+ åœ¨äº†è§£é›†ç¾¤é…ç½®å®‰è£…ä¹‹å‰éœ€è¦æŒæ¡å¦‚ä¸‹å‡ ä¸ªæ¦‚å¿µ(concept):
  
-**ÍØÆË£¨Topologies£©**:ÀàËÆHadoopµÄMapReduce µÄÈÎÎñ£¨Job£©£¬Çø±ğÔÚÓÚ MapReduce µÄÒ»¸ö Job ÔÚµÃµ½½á¹ûÖ®ºó×Ü»á½áÊø£¬¶øÍØÆË»áÒ»Ö±ÔÚ¼¯ÈºÖĞÔËĞĞ£¬Ö±µ½±»ÊÖ¶¯ÖÕÖ¹¡£
+**æ‹“æ‰‘ï¼ˆTopologiesï¼‰**:ç±»ä¼¼Hadoopçš„MapReduce çš„ä»»åŠ¡ï¼ˆJobï¼‰ï¼ŒåŒºåˆ«åœ¨äº MapReduce çš„ä¸€ä¸ª Job åœ¨å¾—åˆ°ç»“æœä¹‹åæ€»ä¼šç»“æŸï¼Œè€Œæ‹“æ‰‘ä¼šä¸€ç›´åœ¨é›†ç¾¤ä¸­è¿è¡Œï¼Œç›´åˆ°è¢«æ‰‹åŠ¨ç»ˆæ­¢ã€‚
 
-**Á÷£¨Streams£©**£ºÊı¾İÁ÷£¨Streams£©ÊÇ Storm ÖĞ×îºËĞÄµÄ³éÏó¸ÅÄî¡£Ò»¸öÊı¾İÁ÷Ö¸µÄÊÇÔÚ·Ö²¼Ê½»·¾³ÖĞ²¢ĞĞ´´½¨¡¢´¦ÀíµÄÒ»×éÔª×é£¨tuple£©µÄÎŞ½çĞòÁĞ¡£
+**æµï¼ˆStreamsï¼‰**ï¼šæ•°æ®æµï¼ˆStreamsï¼‰æ˜¯ Storm ä¸­æœ€æ ¸å¿ƒçš„æŠ½è±¡æ¦‚å¿µã€‚ä¸€ä¸ªæ•°æ®æµæŒ‡çš„æ˜¯åœ¨åˆ†å¸ƒå¼ç¯å¢ƒä¸­å¹¶è¡Œåˆ›å»ºã€å¤„ç†çš„ä¸€ç»„å…ƒç»„ï¼ˆtupleï¼‰çš„æ— ç•Œåºåˆ—ã€‚
 
-**Êı¾İÔ´£¨Spouts£©**£ºÊı¾İÔ´£¨Spout£©ÊÇÍØÆËÖĞÊı¾İÁ÷µÄÀ´Ô´¡£Ò»°ã Spout »á´ÓÒ»¸öÍâ²¿µÄÊı¾İÔ´¶ÁÈ¡Ôª×éÈ»ºó½«ËûÃÇ·¢ËÍµ½ÍØÆËÖĞ¡£¸ù¾İĞèÇóµÄ²»Í¬£¬Spout ¼È¿ÉÒÔ¶¨ÒåÎª¿É¿¿µÄÊı¾İÔ´£¬Ò²¿ÉÒÔ¶¨ÒåÎª²»¿É¿¿µÄÊı¾İÔ´¡£  ÔÚ´óÊı¾İ´¦ÀíÖĞ¿ÉÒÔ´Ókafka»ñÈ¡Êı¾İµÄÂß¼­·Åµ½SpoutsÖĞ¡£
+**æ•°æ®æºï¼ˆSpoutsï¼‰**ï¼šæ•°æ®æºï¼ˆSpoutï¼‰æ˜¯æ‹“æ‰‘ä¸­æ•°æ®æµçš„æ¥æºã€‚ä¸€èˆ¬ Spout ä¼šä»ä¸€ä¸ªå¤–éƒ¨çš„æ•°æ®æºè¯»å–å…ƒç»„ç„¶åå°†ä»–ä»¬å‘é€åˆ°æ‹“æ‰‘ä¸­ã€‚æ ¹æ®éœ€æ±‚çš„ä¸åŒï¼ŒSpout æ—¢å¯ä»¥å®šä¹‰ä¸ºå¯é çš„æ•°æ®æºï¼Œä¹Ÿå¯ä»¥å®šä¹‰ä¸ºä¸å¯é çš„æ•°æ®æºã€‚  åœ¨å¤§æ•°æ®å¤„ç†ä¸­å¯ä»¥ä»kafkaè·å–æ•°æ®çš„é€»è¾‘æ”¾åˆ°Spoutsä¸­ã€‚
 
-**Êı¾İÁ÷´¦Àí×é¼ş£¨Bolts£©**£ºÍØÆËÖĞËùÓĞµÄÊı¾İ´¦Àí¾ùÊÇÓÉ Bolt Íê³ÉµÄ¡£Í¨¹ıÊı¾İ¹ıÂË£¨filtering£©¡¢º¯Êı´¦Àí£¨functions£©¡¢¾ÛºÏ£¨aggregations£©¡¢Áª½á£¨joins£©¡¢Êı¾İ¿â½»»¥µÈ¹¦ÄÜ£¬Bolt ¼¸ºõÄÜ¹»Íê³ÉÈÎºÎÒ»ÖÖÊı¾İ´¦ÀíĞèÇó¡£  ´¦Àí×é¼şÊÇÊı¾İ´¦ÀíµÄºËĞÄ£¬±ÈÈç¿ÉÒÔ°Ñ·ÖÎöµÄ½á¹ûĞ´ÈëHDFS¡¢¹ØÏµĞÍÊı¾İ¿â¡¢HBaseµÈ´æ´¢ÏµÍ³ÖĞ¡£
+**æ•°æ®æµå¤„ç†ç»„ä»¶ï¼ˆBoltsï¼‰**ï¼šæ‹“æ‰‘ä¸­æ‰€æœ‰çš„æ•°æ®å¤„ç†å‡æ˜¯ç”± Bolt å®Œæˆçš„ã€‚é€šè¿‡æ•°æ®è¿‡æ»¤ï¼ˆfilteringï¼‰ã€å‡½æ•°å¤„ç†ï¼ˆfunctionsï¼‰ã€èšåˆï¼ˆaggregationsï¼‰ã€è”ç»“ï¼ˆjoinsï¼‰ã€æ•°æ®åº“äº¤äº’ç­‰åŠŸèƒ½ï¼ŒBolt å‡ ä¹èƒ½å¤Ÿå®Œæˆä»»ä½•ä¸€ç§æ•°æ®å¤„ç†éœ€æ±‚ã€‚  å¤„ç†ç»„ä»¶æ˜¯æ•°æ®å¤„ç†çš„æ ¸å¿ƒï¼Œæ¯”å¦‚å¯ä»¥æŠŠåˆ†æçš„ç»“æœå†™å…¥HDFSã€å…³ç³»å‹æ•°æ®åº“ã€HBaseç­‰å­˜å‚¨ç³»ç»Ÿä¸­ã€‚
 
-**Êı¾İÁ÷·Ö×é£¨Stream groupings£©**£ºÎªÍØÆËÖĞµÄÃ¿¸ö Bolt µÄÈ·¶¨ÊäÈëÊı¾İÁ÷ÊÇ¶¨ÒåÒ»¸öÍØÆËµÄÖØÒª»·½Ú¡£Êı¾İÁ÷·Ö×é¶¨ÒåÁËÔÚ Bolt µÄ²»Í¬ÈÎÎñ£¨tasks£©ÖĞ»®·ÖÊı¾İÁ÷µÄ·½Ê½¡£
+**æ•°æ®æµåˆ†ç»„ï¼ˆStream groupingsï¼‰**ï¼šä¸ºæ‹“æ‰‘ä¸­çš„æ¯ä¸ª Bolt çš„ç¡®å®šè¾“å…¥æ•°æ®æµæ˜¯å®šä¹‰ä¸€ä¸ªæ‹“æ‰‘çš„é‡è¦ç¯èŠ‚ã€‚æ•°æ®æµåˆ†ç»„å®šä¹‰äº†åœ¨ Bolt çš„ä¸åŒä»»åŠ¡ï¼ˆtasksï¼‰ä¸­åˆ’åˆ†æ•°æ®æµçš„æ–¹å¼ã€‚
 
-**TupleÔª×é**£ºÔÚ±àĞ´Spout»òÕßBolt³ÌĞòÊ±£¬¾­³£¶¼ĞèÒª½Ó´¥µ½Ôª×é£¬ÕâÊÇÔÚSpoutºÍBoltÖĞ´«µİÊı¾İµÄÊı¾İ½á¹¹¡£µ±È»ÒòÎªÉæ¼°µ½¿çÖ÷»ú¿ç½ø³Ì´«µİÊı¾İ£¬ËùÒÔÊı¾İĞèÒªÊÇ¿ÉĞòÁĞ»¯µÄ£¬Èç¹û´«µİ¸´ÔÓ¶ÔÏó£¬ÔòĞèÒªÊµÏÖĞòÁĞ»¯¡£
+**Tupleå…ƒç»„**ï¼šåœ¨ç¼–å†™Spoutæˆ–è€…Boltç¨‹åºæ—¶ï¼Œç»å¸¸éƒ½éœ€è¦æ¥è§¦åˆ°å…ƒç»„ï¼Œè¿™æ˜¯åœ¨Spoutå’ŒBoltä¸­ä¼ é€’æ•°æ®çš„æ•°æ®ç»“æ„ã€‚å½“ç„¶å› ä¸ºæ¶‰åŠåˆ°è·¨ä¸»æœºè·¨è¿›ç¨‹ä¼ é€’æ•°æ®ï¼Œæ‰€ä»¥æ•°æ®éœ€è¦æ˜¯å¯åºåˆ—åŒ–çš„ï¼Œå¦‚æœä¼ é€’å¤æ‚å¯¹è±¡ï¼Œåˆ™éœ€è¦å®ç°åºåˆ—åŒ–ã€‚
 
-**¿É¿¿ĞÔ£¨Reliability£©**£º±ÈÈç¶ÔÊı¾İ´¦ÀíÖĞµÄ
+**å¯é æ€§ï¼ˆReliabilityï¼‰**ï¼šæ¯”å¦‚å¯¹æ•°æ®å¤„ç†ä¸­çš„
 
-**ÈÎÎñ£¨Tasks£©**£ºÔÚ Storm ¼¯ÈºÖĞÃ¿¸ö Spout ºÍ Bolt ¶¼ÓÉÈô¸É¸öÈÎÎñ£¨tasks£©À´Ö´ĞĞ¡£
+**ä»»åŠ¡ï¼ˆTasksï¼‰**ï¼šåœ¨ Storm é›†ç¾¤ä¸­æ¯ä¸ª Spout å’Œ Bolt éƒ½ç”±è‹¥å¹²ä¸ªä»»åŠ¡ï¼ˆtasksï¼‰æ¥æ‰§è¡Œã€‚
 
-**¹¤×÷½ø³Ì£¨Workers£©**£ºÍØÆËÊÇÔÚÒ»¸ö»ò¶à¸ö¹¤×÷½ø³Ì£¨worker processes£©ÖĞÔËĞĞµÄ
+**å·¥ä½œè¿›ç¨‹ï¼ˆWorkersï¼‰**ï¼šæ‹“æ‰‘æ˜¯åœ¨ä¸€ä¸ªæˆ–å¤šä¸ªå·¥ä½œè¿›ç¨‹ï¼ˆworker processesï¼‰ä¸­è¿è¡Œçš„
 
-**nimbus**£ºstorm¼¯ÈºµÄÊØ»¤½ø³ÌÖ®Ò»£¬ËùÒÔ¼¯ÈºµÄÖ÷¹ÜÀí·şÎñ¡£
+**nimbus**ï¼šstormé›†ç¾¤çš„å®ˆæŠ¤è¿›ç¨‹ä¹‹ä¸€ï¼Œæ‰€ä»¥é›†ç¾¤çš„ä¸»ç®¡ç†æœåŠ¡ã€‚
 
-**supervisor**£ºstorm¼¯ÈºµÄworker½Úµã£¬ÔËĞĞÈÎÎñµÄ»úÆ÷ÊØ»¤½ø³Ì¡£
+**supervisor**ï¼šstormé›†ç¾¤çš„workerèŠ‚ç‚¹ï¼Œè¿è¡Œä»»åŠ¡çš„æœºå™¨å®ˆæŠ¤è¿›ç¨‹ã€‚
 
-**zookeeper**£º×÷Îªstorm¼¯ÈºµÄÅäÖÃ¹ÜÀí´æÔÚ¡£(zookeeper»ù±¾ÊÇÅäÖÃ¹ÜÀíµÄÖ÷Ñ¡Èí¼ş)
+**zookeeper**ï¼šä½œä¸ºstormé›†ç¾¤çš„é…ç½®ç®¡ç†å­˜åœ¨ã€‚(zookeeperåŸºæœ¬æ˜¯é…ç½®ç®¡ç†çš„ä¸»é€‰è½¯ä»¶)
 
-## 4.2 Storm¼¯Èº´î½¨
+## 4.2 Stormé›†ç¾¤æ­å»º
 
-### 4.2.1 ²âÊÔ»·¾³×¼±¸
-ÔÚ192.168.32.150~152ÈıÌ¨Ö÷»ú²¿Êğstorm¼¯Èº£¬ÒÀÀµzookeeperÍê³ÉÅäÖÃ¹ÜÀí¼°nimbusºÍsupervisorµÄ×¢²á¹¤×÷¡£²¿Êğ½á¹¹ÈçÏÂËùÊ¾£º
+### 4.2.1 æµ‹è¯•ç¯å¢ƒå‡†å¤‡
+åœ¨192.168.32.150~152ä¸‰å°ä¸»æœºéƒ¨ç½²stormé›†ç¾¤ï¼Œä¾èµ–zookeeperå®Œæˆé…ç½®ç®¡ç†åŠnimbuså’Œsupervisorçš„æ³¨å†Œå·¥ä½œã€‚éƒ¨ç½²ç»“æ„å¦‚ä¸‹æ‰€ç¤ºï¼š
 
 ```
 --zookeeper
@@ -210,18 +210,18 @@ Storm×÷Îª´óÊı¾İ´¦Àí¿ò¼ÜÖ®Ò»£¬ÆäºÍSparkÒ»Ñù¾ßÓĞ·Ç³£¹ã·ºµÄÊ¹ÓÃ,ÈçÏÂÎªStormµÄ¼Ü¹¹Í¼
   192.168.32.151
   192.168.32.152
 ```
-Ç°ÖÃÌõ¼ş£ºÔÚ°²×°ºÍÅäÖÃÖ®Ç°ĞèÒª±£Ö¤ËùÓĞ»úÆ÷JDK7+ºÍpython 2.6.6+¡£
-### 4.2.2 ZooKeeper¼¯Èº´î½¨¼°Æô¶¯
-- ÏÂÔØ½âÑ¹zookeeper£ºhttp://zookeeper.apache.org/releases.html
-- ĞŞ¸ÄzookeeperµÄconf/zoo.cfgÎÄ¼ş£¬Ôö¼ÓÈçÏÂÅäÖÃ(Ã¿Ì¨»úÆ÷µÄzookeeperÅäÖÃ¾ùÈçÏÂ)
+å‰ç½®æ¡ä»¶ï¼šåœ¨å®‰è£…å’Œé…ç½®ä¹‹å‰éœ€è¦ä¿è¯æ‰€æœ‰æœºå™¨JDK7+å’Œpython 2.6.6+ã€‚
+### 4.2.2 ZooKeeperé›†ç¾¤æ­å»ºåŠå¯åŠ¨
+- ä¸‹è½½è§£å‹zookeeperï¼šhttp://zookeeper.apache.org/releases.html
+- ä¿®æ”¹zookeeperçš„conf/zoo.cfgæ–‡ä»¶ï¼Œå¢åŠ å¦‚ä¸‹é…ç½®(æ¯å°æœºå™¨çš„zookeeperé…ç½®å‡å¦‚ä¸‹)
 ```
 clientPort=2181
   server.150=192.168.32.150:2888:3888
   server.151=192.168.32.151:2888:3888
   server.152=192.168.32.152:2888:3888
 ```
-- Æô¶¯zookeeper¼¯Èº: ÔÚÃ¿Ì¨»úÆ÷ÉÏÍ¨¹ızookeeperµÄbin/zkServer.sh startÆô¶¯zk£¬zookeeper»á×Ô¶¯×é½¨¼¯Èº¡£
-- zookeeper»·¾³È·ÈÏ£ºÔÚÃ¿Ì¨»úÆ÷ÉÏÔËĞĞzkServer.sh status²é¿´Æä×´Ì¬£¬Èç
+- å¯åŠ¨zookeeperé›†ç¾¤: åœ¨æ¯å°æœºå™¨ä¸Šé€šè¿‡zookeeperçš„bin/zkServer.sh startå¯åŠ¨zkï¼Œzookeeperä¼šè‡ªåŠ¨ç»„å»ºé›†ç¾¤ã€‚
+- zookeeperç¯å¢ƒç¡®è®¤ï¼šåœ¨æ¯å°æœºå™¨ä¸Šè¿è¡ŒzkServer.sh statusæŸ¥çœ‹å…¶çŠ¶æ€ï¼Œå¦‚
 ```
 [root@rhel150 ~]# ./zookeeper/zookeeper-3.4.9/bin/zkServer.sh status
 ZooKeeper JMX enabled by default
@@ -229,9 +229,9 @@ Using config: /root/zookeeper/zookeeper-3.4.9/bin/../conf/zoo.cfg
 Mode: follower
 ```
 
-### 4.2.3 Storm¼¯Èº´î½¨¼°Æô¶¯
-- ÏÂÔØ½âÑ¹storm£ºhttp://storm.apache.org/releases/1.2.1
-- ÅäÖÃstorm£¬ĞŞ¸Äconf/storm.yamlÎÄ¼ş£¬Ôö¼ÓÈçÏÂÅäÖÃ(Ã¿Ì¨»úÆ÷ÅäÖÃ¾ùÏàÍ¬)£º
+### 4.2.3 Stormé›†ç¾¤æ­å»ºåŠå¯åŠ¨
+- ä¸‹è½½è§£å‹stormï¼šhttp://storm.apache.org/releases/1.2.1
+- é…ç½®stormï¼Œä¿®æ”¹conf/storm.yamlæ–‡ä»¶ï¼Œå¢åŠ å¦‚ä¸‹é…ç½®(æ¯å°æœºå™¨é…ç½®å‡ç›¸åŒ)ï¼š
 
 ```
 storm.zookeeper.servers:
@@ -254,10 +254,10 @@ storm.health.check.dir: "healthchecks"
  
 storm.health.check.timeout.ms: 5000
 ```
-ÆäÖĞstorm.local.dirÖ¸¶¨µÄÄ¿Â¼ĞèÒªÌáÇ°´´½¨£¬supervisor.slots.portsÅäÖÃµÄ¶Ë¿ÚÊıÁ¿¾ö¶¨ÁËÃ¿Ì¨supervisor»úÆ÷µÄworkerÊıÁ¿£¬Ã¿¸öworker»áÓĞ×Ô¼ºµÄ¼àÌı¶Ë¿ÚÓÃÓÚ¼àÌıÈÎÎñ¡£
+å…¶ä¸­storm.local.diræŒ‡å®šçš„ç›®å½•éœ€è¦æå‰åˆ›å»ºï¼Œsupervisor.slots.portsé…ç½®çš„ç«¯å£æ•°é‡å†³å®šäº†æ¯å°supervisoræœºå™¨çš„workeræ•°é‡ï¼Œæ¯ä¸ªworkerä¼šæœ‰è‡ªå·±çš„ç›‘å¬ç«¯å£ç”¨äºç›‘å¬ä»»åŠ¡ã€‚
 
-- Æô¶¯storm£º
-1. ÔÚ192.168.32.150»úÆ÷Æô¶¯nimbusºÍ¼à¿Ø,½Å±¾ÈçÏÂ£º
+- å¯åŠ¨stormï¼š
+1. åœ¨192.168.32.150æœºå™¨å¯åŠ¨nimbuså’Œç›‘æ§,è„šæœ¬å¦‚ä¸‹ï¼š
 
 ```
 #!/bin/sh
@@ -266,7 +266,7 @@ STORM_HOME=/root/storm/storm-1.2.1
 nohup $STORM_HOME/bin/storm nimbus &
 nohup $STORM_HOME/bin/storm ui &
 ```
-2. ÔÚ192.168.32.151ºÍ152»úÆ÷Æô¶¯supervisor×÷Îªworker£¬½Å±¾ÈçÏÂ
+2. åœ¨192.168.32.151å’Œ152æœºå™¨å¯åŠ¨supervisorä½œä¸ºworkerï¼Œè„šæœ¬å¦‚ä¸‹
 
 ```
 #!/bin/sh
@@ -275,31 +275,31 @@ STORM_HOME=/root/storm/storm-1.2.1
 nohup $STORM_HOME/bin/storm supervisor &
 
 ```
-- È·ÈÏStormÆô¶¯×´Ì¬£ºÍ¨¹ınimbusÖ÷»ú(192.168.32.150)µÄ8080¶Ë¿Ú·ÃÎÊ£¬ÈçÏÂËùÊ¾£º
+- ç¡®è®¤Stormå¯åŠ¨çŠ¶æ€ï¼šé€šè¿‡nimbusä¸»æœº(192.168.32.150)çš„8080ç«¯å£è®¿é—®ï¼Œå¦‚ä¸‹æ‰€ç¤ºï¼š
 
 ![image](../images/6-S-storm-ui-ok.png)
 
-### 4.2 Storm Topology±à³ÌÊµÏÖºÍ²¿Êğ
+### 4.2 Storm Topologyç¼–ç¨‹å®ç°å’Œéƒ¨ç½²
 
-#### 4.2.1 TopologyÑùÀı¸ÅÀÀ
+#### 4.2.1 Topologyæ ·ä¾‹æ¦‚è§ˆ
 
-»ùÓÚÒÔÉÏ¶ÔStorm»ù±¾¸ÅÄîµÄÀí½â£¬±à³ÌÊµÏÖÒ»¸ö¼òµ¥µÄTopogy£¬¸ÄTopogyÓĞÒ»¸öSpoutºÍÈı¸öBolt×é³É¡£ÆäÖĞTestWordSpoutÖ÷ÒªÄ£ÄâÒ»¸öÊı¾İÔ´Ëæ»ú²ú³öÒ»¸öµ¥´Ê£¬È»ºó¾­¹ıExclamationBolt¡¢WordCountBolt¡¢ReportBolt½øĞĞ´¦Àí£¬×îÖÕÓÉExclamationTopology½øĞĞSpoutºÍBoltµÄ×é×°¡£
-ºËĞÄÁ÷³ÌÎª:
+åŸºäºä»¥ä¸Šå¯¹StormåŸºæœ¬æ¦‚å¿µçš„ç†è§£ï¼Œç¼–ç¨‹å®ç°ä¸€ä¸ªç®€å•çš„Topogyï¼Œæ”¹Topogyæœ‰ä¸€ä¸ªSpoutå’Œä¸‰ä¸ªBoltç»„æˆã€‚å…¶ä¸­TestWordSpoutä¸»è¦æ¨¡æ‹Ÿä¸€ä¸ªæ•°æ®æºéšæœºäº§å‡ºä¸€ä¸ªå•è¯ï¼Œç„¶åç»è¿‡ExclamationBoltã€WordCountBoltã€ReportBoltè¿›è¡Œå¤„ç†ï¼Œæœ€ç»ˆç”±ExclamationTopologyè¿›è¡ŒSpoutå’ŒBoltçš„ç»„è£…ã€‚
+æ ¸å¿ƒæµç¨‹ä¸º:
 
 ```
-1¡¢TestWordSpoutµÄnextTupleËæ»ú²ú³öµ¥´Ê
+1ã€TestWordSpoutçš„nextTupleéšæœºäº§å‡ºå•è¯
 	public void nextTuple() {
 		Utils.sleep(100);
 		final String[] words = new String[] { "nathan", "mike", "jackson", "golda", "bertels","hello","world","java","python" };
 		final String word = words[_rand.nextInt(words.length)];
 		_collector.emit(new Values(word));
 	}
-2¡¢ExclamationBoltµÄexecute·½·¨¼òµ¥×·¼ÓÒ»¸ö¸ĞÌ¾ºÅ
+2ã€ExclamationBoltçš„executeæ–¹æ³•ç®€å•è¿½åŠ ä¸€ä¸ªæ„Ÿå¹å·
     public void execute(Tuple tuple) {
       _collector.emit(tuple, new Values(tuple.getString(0) + "!"));
       _collector.ack(tuple);
     }
-3¡¢WordCountBoltµÄexecute¶Ôµ¥´Ê½øĞĞ¼ÆÊı
+3ã€WordCountBoltçš„executeå¯¹å•è¯è¿›è¡Œè®¡æ•°
     public void execute(Tuple input) {
 
         String word = input.getStringByField("word");
@@ -311,7 +311,7 @@ nohup $STORM_HOME/bin/storm supervisor &
         this.counts.put(word, count);
         this.collector.emit(new Values(word,count));
     }
-4¡¢ReportBolt execute·½·¨°Ñ¼ÆÊıµÄ½á¹ûÊä³öµ½ÈÕÖ¾ÎÄ¼şÖĞ
+4ã€ReportBolt executeæ–¹æ³•æŠŠè®¡æ•°çš„ç»“æœè¾“å‡ºåˆ°æ—¥å¿—æ–‡ä»¶ä¸­
     public void execute(Tuple input) {
         String word = input.getStringByField("word");
         Long count = input.getLongByField("count");
@@ -327,8 +327,8 @@ nohup $STORM_HOME/bin/storm supervisor &
 		}
     }
 ```
-#### 4.2.2 Topology±à³ÌÊµÏÖ
-**1¡¢TestWordSpout¸ºÔğËæ»úÊä³öword£¬Ä£ÄâÊı¾İÔ´**
+#### 4.2.2 Topologyç¼–ç¨‹å®ç°
+**1ã€TestWordSpoutè´Ÿè´£éšæœºè¾“å‡ºwordï¼Œæ¨¡æ‹Ÿæ•°æ®æº**
 
 ```
 package first;
@@ -368,7 +368,7 @@ public class TestWordSpout extends BaseRichSpout {
 }
 
 ```
-**2¡¢ExclamationBoltÀà¼òµ¥µÄ¶ÔÊı¾İwordÔö¼ÓÁËÒ»¸ö¸ĞÌ¾ºÅ!**
+**2ã€ExclamationBoltç±»ç®€å•çš„å¯¹æ•°æ®wordå¢åŠ äº†ä¸€ä¸ªæ„Ÿå¹å·!**
 
 ```
 package first;
@@ -403,7 +403,7 @@ public class ExclamationBolt extends BaseRichBolt {
   }
 
 ```
-**3¡¢WordCountBoltÀà½øĞĞ¼òµ¥µÄcount¼ÆÊı**
+**3ã€WordCountBoltç±»è¿›è¡Œç®€å•çš„countè®¡æ•°**
 
 ```
 package first;
@@ -463,7 +463,7 @@ public class WordCountBolt extends BaseRichBolt {
 
 }
 ```
-**4¡¢ReportBoltÀàÖ÷ÒªÊÇ°Ñ¼ÆËã½á¹ûÊä³öµ½ÈÕÖ¾ÎÄ¼şÖĞ¡£ÈÕÖ¾ÎÄ¼şµÄÂ·¾¶ÓÉTopologyÖĞµÄconfigmap½øĞĞÅäÖÃ£¬ÈçÏÂÀàÖĞprepare·½·¨¾ÍÊÇ´ÓconfigmapÖĞ»ñÈ¡ÈÕÖ¾Â·¾¶**
+**4ã€ReportBoltç±»ä¸»è¦æ˜¯æŠŠè®¡ç®—ç»“æœè¾“å‡ºåˆ°æ—¥å¿—æ–‡ä»¶ä¸­ã€‚æ—¥å¿—æ–‡ä»¶çš„è·¯å¾„ç”±Topologyä¸­çš„configmapè¿›è¡Œé…ç½®ï¼Œå¦‚ä¸‹ç±»ä¸­prepareæ–¹æ³•å°±æ˜¯ä»configmapä¸­è·å–æ—¥å¿—è·¯å¾„**
 
 ```
 package first;
@@ -529,7 +529,7 @@ public class ReportBolt extends BaseRichBolt {
 
 }
 ```
-**5¡¢ExclamationTopologyÍ¨¹ıTopologyBuilder½øĞĞTopology×é×°£¬ÆäÖĞshuffleGrouping¾ö¶¨ÁËSpoutºÍBoltµÄÊı¾İÁ÷Ïò**
+**5ã€ExclamationTopologyé€šè¿‡TopologyBuilderè¿›è¡ŒTopologyç»„è£…ï¼Œå…¶ä¸­shuffleGroupingå†³å®šäº†Spoutå’ŒBoltçš„æ•°æ®æµå‘**
 
 ```
 package first;
@@ -563,7 +563,7 @@ public class ExclamationTopology {
 			        .shuffleGrouping("wordcount");
 
 		Map conf = new HashMap();
-	    conf.put("logFile", logFile);// "logFile" property can be used in any Spout and Bolt¡£
+	    conf.put("logFile", logFile);// "logFile" property can be used in any Spout and Boltã€‚
 		conf.put(Config.TOPOLOGY_WORKERS, 4);
 		
 		 System.out.println("ExclamationTopology Started...");
@@ -574,8 +574,8 @@ public class ExclamationTopology {
 }
 
 ```
-#### 4.2.3 Topology´ò°üºÍÔËĞĞ
-¿ÉÒÔ²ÉÓÃÈÎºÎÒ»ÖÖÄãÏ²»¶µÄ¹¤¾ß°ÑÒÔÉÏ5¸öÀà´ò°ü³ÉjarÎÄ¼ş£¬È»ºóÉÏ´«µ½stormµÄnimbus»úÆ÷(192.168.32.150)£¬È»ºóÊ¹ÓÃstorm jar½øĞĞtopologyÌá½»¡£
+#### 4.2.3 Topologyæ‰“åŒ…å’Œè¿è¡Œ
+å¯ä»¥é‡‡ç”¨ä»»ä½•ä¸€ç§ä½ å–œæ¬¢çš„å·¥å…·æŠŠä»¥ä¸Š5ä¸ªç±»æ‰“åŒ…æˆjaræ–‡ä»¶ï¼Œç„¶åä¸Šä¼ åˆ°stormçš„nimbusæœºå™¨(192.168.32.150)ï¼Œç„¶åä½¿ç”¨storm jarè¿›è¡Œtopologyæäº¤ã€‚
 
 ```
 [root@rhel150 bin]# ./storm jar /root/storm/storm-test1-0.0.1-SNAPSHOT.jar first.ExclamationTopology /root/storm/exclamationTopology.log
@@ -597,15 +597,15 @@ ExclamationTopology Started...
 946  [main] INFO  o.a.s.StormSubmitter - Finished submitting topology: mytopology
 ```
 
-ÔËĞĞ½á¹ûÑéÖ¤£º¿ÉÒÔ²é¿´ÈÎÒ»supervisor»úÆ÷ÉÏµÄÈÕÖ¾ÎÄ¼şÊÇ·ñÕı³£ÊäÈë£ºÈçÔËĞĞÃüÁîÖĞ¸øµÄ/root/storm/exclamationTopology.logÎÄ¼ş¡£
+è¿è¡Œç»“æœéªŒè¯ï¼šå¯ä»¥æŸ¥çœ‹ä»»ä¸€supervisoræœºå™¨ä¸Šçš„æ—¥å¿—æ–‡ä»¶æ˜¯å¦æ­£å¸¸è¾“å…¥ï¼šå¦‚è¿è¡Œå‘½ä»¤ä¸­ç»™çš„/root/storm/exclamationTopology.logæ–‡ä»¶ã€‚
 
-## 4.2 ¹ØÓÚStormµÄ¼¸µãË¼¿¼
-1£¬Spout×÷ÎªÊı¾İÔ´µÄÅäÖÃ£¬¿ÉÒÔ´ÓºÜ¶àÏÖÓĞµÄ´óÊı¾İÄ¥Ä£¿é»ñÈ¡Êı¾İ·ÖÎö£¬±ÈÈçºÜ¶à´óÊı¾İ·ÖÎö¶¼»áÊ¹ÓÃkafka×÷ÎªÏûÏ¢Êı¾İ´æ´¢ÖĞĞÄ»º´æÊı¾İ£¬Spout¾Í¿ÉÒÔ´Ókafka¶ÁÈ¡Êı¾İ×÷ÎªÊı¾İÔ´¡£
+## 4.3 å…³äºStormçš„å‡ ç‚¹æ€è€ƒ
+1ï¼ŒSpoutä½œä¸ºæ•°æ®æºçš„é…ç½®ï¼Œå¯ä»¥ä»å¾ˆå¤šç°æœ‰çš„å¤§æ•°æ®ç£¨æ¨¡å—è·å–æ•°æ®åˆ†æï¼Œæ¯”å¦‚å¾ˆå¤šå¤§æ•°æ®åˆ†æéƒ½ä¼šä½¿ç”¨kafkaä½œä¸ºæ¶ˆæ¯æ•°æ®å­˜å‚¨ä¸­å¿ƒç¼“å­˜æ•°æ®ï¼ŒSpoutå°±å¯ä»¥ä»kafkaè¯»å–æ•°æ®ä½œä¸ºæ•°æ®æºã€‚
 
-2£¬BoltÊÇ´¦ÀíÊı¾İµÄºËĞÄ£¬¿ÉÒÔÉèÖÃ¶à¼¶µÄÊı¾İ·ÖÎöBolt£¬Bolt´¦ÀíµÄÊı¾İ¿ÉÒÔ´æ´¢ÓÚÆÕÍ¨ÎÄ¼ş¡¢·Ö²¼Ê½ÎÄ¼şÏµÍ³¡¢¹ØÏµĞÍÊı¾İ¿â¡¢HBase´óÊı¾İ´æ´¢µÈÏµÍ³ÖĞ£¬×Ô¼ºÊµÏÖ·ÃÎÊÕâĞ©´æ´¢ÏµÍ³µÄÂß¼­±ã¿É¡£
+2ï¼ŒBoltæ˜¯å¤„ç†æ•°æ®çš„æ ¸å¿ƒï¼Œå¯ä»¥è®¾ç½®å¤šçº§çš„æ•°æ®åˆ†æBoltï¼ŒBoltå¤„ç†çš„æ•°æ®å¯ä»¥å­˜å‚¨äºæ™®é€šæ–‡ä»¶ã€åˆ†å¸ƒå¼æ–‡ä»¶ç³»ç»Ÿã€å…³ç³»å‹æ•°æ®åº“ã€HBaseå¤§æ•°æ®å­˜å‚¨ç­‰ç³»ç»Ÿä¸­ï¼Œè‡ªå·±å®ç°è®¿é—®è¿™äº›å­˜å‚¨ç³»ç»Ÿçš„é€»è¾‘ä¾¿å¯ã€‚
 
-3£¬Storm×÷ÎªÊµÊ±·ÖÎö»¹ÊÇÀëÏß·ÖÎö¶¼ÊÇ±È½ÏºÏÊÊµÄ£¬±ÈÈçÒªÀëÏß·ÖÎönginx¡¢apacheÕâÑùµÄweb serverµÄ·ÃÎÊÈÕÖ¾£¬½øĞĞÓÃ»§·ÖÎö¡¢´íÎó·ÖÎö¶¼ÊÇ¿ÉÒÔµÄ¡£
+3ï¼ŒStormä½œä¸ºå®æ—¶åˆ†æè¿˜æ˜¯ç¦»çº¿åˆ†æéƒ½æ˜¯æ¯”è¾ƒåˆé€‚çš„ï¼Œæ¯”å¦‚è¦ç¦»çº¿åˆ†ænginxã€apacheè¿™æ ·çš„web serverçš„è®¿é—®æ—¥å¿—ï¼Œè¿›è¡Œç”¨æˆ·åˆ†æã€é”™è¯¯åˆ†æéƒ½æ˜¯å¯ä»¥çš„ã€‚
 
-ÏÂÒ»¸öARTSµÄShareÎÒ½«»á×Ü½áSparkµÄÊ¹ÓÃ£¬È»ºóĞÎ³ÉÁ½ÕßµÄ¶Ô±È·ÖÎö¡£
+ä¸‹ä¸€ä¸ªARTSçš„Shareæˆ‘å°†ä¼šæ€»ç»“Sparkçš„ä½¿ç”¨ï¼Œç„¶åå½¢æˆä¸¤è€…çš„å¯¹æ¯”åˆ†æã€‚
 
 
