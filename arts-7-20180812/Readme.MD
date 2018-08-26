@@ -1,19 +1,97 @@
-In this ARTS, i 
+In this ARTS, I introduces the Spark's installation,configration and program sample.
 
 # 1.Algorithm
 ### Question: 
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+
+```
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+```
+For example, two is written as II in Roman numeral, just two one's added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.
+
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+
+I can be placed before V (5) and X (10) to make 4 and 9. 
+X can be placed before L (50) and C (100) to make 40 and 90. 
+C can be placed before D (500) and M (1000) to make 400 and 900.
+Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.
+
+Example1
+
+```
+Input: "III"
+Output: 3
+```
+Example2
+
+```
+Input: "MCMXCIV"
+Output: 1994
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+```
 
 
 ### My solution in python3 is:
 
+```
+class Solution:
+    N_ENUM = {"I":1,"V":5,"X":10,"L":50,"C":100,"D":500,"M":1000}
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        strLen = len(s)
+        if strLen == 0:
+            return 0
+        
+        s = s[::-1] #reverse the string
+        resultVal = self.N_ENUM[s[0]]
+        preStrVal = self.N_ENUM[s[0]]
+
+        i = 1
+        while i < strLen:
+            currentStrVal = self.N_ENUM[s[i]]
+            if currentStrVal < preStrVal: # process the IV/IX,XL/XC,CD/CM's reverted string
+                resultVal -= currentStrVal
+            else:
+                resultVal += currentStrVal
+            preStrVal = currentStrVal
+            i += 1
+        
+        return resultVal
+        
+
+def main():
+
+    print(Solution().romanToInt("MCMXCIV"))
+
+if __name__ == "__main__":
+    main()
+```
+In this solution, I reverted the origin string for processing the IV/IX,XL/XC,CD/CM with easier way.
 
 # 2.Review
-Today i read an artical titled “Moving from Python to Go” the link is: https://towardsdatascience.com/moving-to-go-from-python-9ebbd9a8aec4
-
-In this artical, i studied some useful sentence or phrase, eg：
-- What if： a user of this function would hopefully send you two integers that you can add. BUT, what if they send strings? Or dictionaries? 
+// TODO: I will complete it later.
 
 # 3.Tips
+有时候一台机器启动了很多的Java进程，我们需要获取每个进程配置的HeapDumpPath路径，此时可以用ps加上awk的for循环来操作。
+1. 我们用ps找出当前用户启动的java进程
+2. 使用for循环(其中for循环结束标志位awk内置的最大记录数NF)，通过substr($i,5,12)获取到HeapDumpPath关键字列。因为配置的HeapDumpPath为"-XX:HeapDumpPath=yyy"字样，因此substr函数需要从5开始
+3. 然后再通过一轮等号分隔的awk命令便可找出HeapDumpPath配置的最终路径。
+
+代码如下：
+```
+ps -ef|grep java|grep [whoami] |awk -F " " '{for (i=1;i<NF;i++) {if (substr($i,5,12)=="HeapDumpPath") print $i}}' | awk -F "=" '{print $2}'
+```
+
 
 # 4.Share(Spark 入门思考)
 
@@ -21,22 +99,23 @@ In this artical, i studied some useful sentence or phrase, eg：
 Spark官网的介绍中说明了Spark是一个快速和多用途的集群计算系统，其提供了Java、Scala、Python、R语言等的开发接口，使用这些语言进行Spark应用的开发都是很容易的，Spark屏蔽了底层任务之间的通信和同步等问题。而且还包括了Spark SQL用于处理SQL和结构化数据处理、MLlib模块用于机器学习，GraphX用于图形处理以及Spark流计算等。
 
 Spark以下属于应该掌握：
-Master：作为整个计算集群的管理端，作为提交任务的接口，可通过web连接Master进行系统信息查看(包括整个集群的计算节点、执行任务等)
 
-Worker：计算节点，就是执行计算任务的主机
+**Master**：作为整个计算集群的管理端，作为提交任务的接口，可通过web连接Master进行系统信息查看(包括整个集群的计算节点、执行任务等)
 
-executor:spark任务的执行单元
-driver program：任务的驱动程序，可简单理解为比如我们使用Java语言开发任务时的main类，其主要驱动任务在集群内并行执行。
+**Worker**：计算节点，就是执行计算任务的主机
 
-application:就是具体的任务(数据处理业务逻辑)
+**executor**:spark任务的执行单元
+**driver**：任务的驱动程序，可简单理解为比如我们使用Java语言开发任务时的main类，其主要驱动任务在集群内并行执行。
 
-RDD(resilient distributed dataset):可理解为我们要处理的数据集，可以从各种文件系统中创建，日常编程中很大的工作量就是处理RDD。
+**application**:就是具体的任务(数据处理业务逻辑)
+
+**RDD(resilient distributed dataset)**:可理解为我们要处理的数据集，可以从各种文件系统中创建，日常编程中很大的工作量就是处理RDD。
 
 spark整体的执行逻辑就是由driver向master申请执行，master给worker分配资源，有worker调度executor执行任务，最终由driver汇总处理。
 
-集群管理器(cluster manager):spark集群模式有Standalone(spark自身集群管理框架)、Mesos、Hadoop YARN、Kubernetes四种。后面三种需要单独安装然后配置spark，第一种则只需安装spark自身即可。
+**集群管理器(cluster manager)**:spark集群模式有Standalone(spark自身集群管理框架)、Mesos、Hadoop YARN、Kubernetes四种。后面三种需要单独安装然后配置spark，第一种则只需安装spark自身即可。
 
-高可用：Spark可以借助于ZooKeeper进行master高可用性配置，保证Master有Standby Master，不出现单实例故障导致整个管理工作搁浅。
+**高可用**：Spark可以借助于ZooKeeper进行master高可用性配置，保证Master有Standby Master，不出现单实例故障导致整个管理工作搁浅。
 
 ## 4.2 Spark集群搭建
 
