@@ -30,7 +30,9 @@ In this ARTS, I introduces the Spark's installation,configration and program sam
   Yarn中也分ResourceManager和NodeManager，其中Resource Manager有Scheduler和ApplicationManager两个组件，Scheduler主要负责分分配资源给应用，并不会进行应用的状态监控，ApplicationManager接受任务提交，并协商让第一个运行任务的容器运行ApplicationMaster，ApplicationMaster负责任务状态的跟踪。
   
   如下为Yarn的架构图:
+  
   ![image](../images/8-S-hadoop-yarn-architecture.gif)
+
 本文主要讲HDFS的使用
 
 ## 4.2 Hadoop集群搭建
