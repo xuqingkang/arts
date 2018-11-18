@@ -1,4 +1,4 @@
-In this ARTS, I introduces the Spark's installation,configration and program sample.
+In this ARTS, I introduces the Hadoop's installation,configration and program sample.
 
 # 1.Algorithm
 ### Question: 
@@ -11,7 +11,48 @@ In this ARTS, I introduces the Spark's installation,configration and program sam
 # 2.Review
 // TODO: I will complete it later.
 
+
 # 3.Tips
+Expect实现Shell脚本中的交互。
+在写Shell脚本希望自动完成交互批量执行时，比如远程登录主机、sftp等涉及密码交互的场景下，可以使用expect命令完成。但需要注意自定安装expect。
+
+如下脚本中主要试图通过sftp命令从远程主机获取文件，使用了expect命令，如"expect {
+  "*(yes/no)?" {send "yes\r";exp_continue}
+}"进行了交互，这在批量执行中自动完成交互是很有用的。
+使用expect和send结合完成密码交互操作。
+
+如下为完整的代码示例：
+```
+#!/usr/bin/expect -f
+set host [lindex $argv 0]
+set username [lindex $argv 1]
+set password [lindex $argv 2]
+set clustername [lindex $argv 3]
+set baseroot [lindex $argv 4]
+
+spawn sftp $username@$host
+#expect "Are you sure you want to continue connecting (yes/no)?"
+#send "yes\r"
+expect {
+  "*(yes/no)?" {send "yes\r";exp_continue}
+}
+expect "$username@$host's password:"
+send "$password\r"
+foreach suffix {
+  c0b0
+  c1b1
+  c1b2
+  c2b3
+  c2b4
+} {
+  expect "sftp>"
+  send "get ${baseroot}/${clustername}-${suffix}/${clustername}-${suffix}-domain/adminserver/config/domain.config ${clustername}-${suffix}\r"
+}
+expect "sftp>"
+send "bye\r"
+#interact
+~
+```
 
 
 
@@ -214,9 +255,7 @@ drwxr-xr-x   - root supergroup          0 2018-07-22 17:55 /test
 ![image](../images/8-S-hadoop-hdfs-fileview.png)
 
 ## 4.3 关于Hadoop的几点思考
-1. 采用ZooKeeper实现Spark的master高可用方案在生产环境是推荐的
-2. 在生产环境中一般从HDFS或者HBase、HIVE等分布式存储中获取数据源进行分析处理
-3. 随着Kerbernetes本身的流行采用Kubernetes作为集群调度工具应该是趋势
-4. Spark2.0中使用Dataset取代了RDD，RDD变成API目前不是很推荐使用了。还有Spark流处理是Storm本身的区别是什么有待于后边继续研究。
-5. 上一篇ARTS中提到的Storm与Spark的区别，各自的适用场景有待深入研究。
+1. Hadoop的分布式HDFS文件系统性能怎样？有待调查
+2. Hadoop的Resource Manager和Mesos的资源调度策略有什么不同？各有什么优缺点？
+3. Hadoop各个发行厂商(Cloudera、Hortonworks、MapR等)之间又是怎么改进Hadoop，让自己的发行版具备足够的市场竞争力呢？
 
