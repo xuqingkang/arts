@@ -11,7 +11,95 @@ In this ARTS, I introduces the SNMP's configration and program sample.
 # 2.Review
 // TODO: I will complete it later.
 
-# 3.Tips
+# 3.Tips(前后端JSON交互，vue+axios进行AJAX数据交互)
+VUE与AXIOS配合通过AJAX请求把数据传给页面进行渲染
+## 3.1后台数据格式
+后台数据为JSON格式，是为服务注册中心Eureka的数据。
+```
+[{"name":"SERVICE-HI","instance":[{"instanceId":"localhost:service-hi:8762","app":"SERVICE-HI","appGroupName":null,"ipAddr":"10.0.0.1","sid":"na","homePageUrl":"http://localhost:8762/","statusPageUrl":"http://localhost:8762/actuator/info","healthCheckUrl":"http://localhost:8762/actuator/health"}]}]
+```
+## 3.1前端页面代码
+前端Vue页面如下所示：
+通过v-for循环获取所有的微服务列表。用element-ui的el-table进行数据展示。
+通过vue生命周期的created、mounted等生命周期控制函数进行axios的ajax调用以获取数据。
+需要注意microServiceList在data中定义好，这样才能做到真正的数据传递。
+```
+<template>
+  <div class="container">
+    <div v-for="microService in microServiceList">
+      <el-table
+        :data="microService.instance"
+        border
+        style="width: 100%">
+        <el-table-column
+          prop="instanceId"
+          label="实例ID"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="statusPageUrl"
+          label="statusPageUrl"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="vipAddress"
+          label="vipAddress">
+        </el-table-column>
+      </el-table>
+    </div>
+  </div>
+</template>
+
+<script>
+
+  export default {
+    data() {
+        return{
+          microServiceList:[
+          ]
+        };
+    },
+    /*传回页面方法1，created关联调用
+    created() {
+        this.getData();
+    },
+    methods:{
+      getData() {
+        this.$axios.get("http://localhost:8787/list")
+          .then((response) => {
+            this.microServiceList = response.data;
+            console.log("-----------------");
+            console.log(this.microServiceList);
+            console.log("-----------------");
+          });
+      }
+    }
+    */
+    
+    mounted: function(){ //传回页面方法2，mounted关联回调
+      this.$axios.get("http://localhost:8787/list")
+        .then((response) => {
+          this.microServiceList = response.data;
+        });
+      console.log(this.microServiceList);
+    }
+    
+    /*
+    mounted: function(){//传回页面方法3，不用箭头函数时通过var _this = this;处理this指向问题
+      var _this = this;
+      _this.$axios.get("http://localhost:8787/list")
+        .then(function(response) {
+          _this.microServiceList = response.data;
+          console.log("-----------------");
+          console.log(_this.microServiceList);
+          console.log("-----------------");
+        });
+      console.log(_this.microServiceList);
+    }
+    */
+  }
+</script>
+```
 
 
 
