@@ -116,4 +116,4 @@ docker run --rm -d -p 10000:10000 -p 10001:9901 -v /root/envoy/envoy-baidu.yaml:
 
 由于上面我们新增了一个端口映射，宿主机的10001到容器的9901(envoy管理端口)，因为我们也可以通过浏览器访问宿主机的10001端口查看envoy的管理界面。像下面的样子：
 
-![image](../images/12-S-envoy-admin.png)
+![image](./images/12-S-envoy-admin.png)
