@@ -6,8 +6,10 @@
 # ***入门步骤
   我们还是直接使用192.168.32.150~152共三台机器组建zookeeper集群。
   根据官网的说明，zookeeper的安装和使用几乎是开源界最简单的了。截止目前(2019.3.23)的稳定版本为：3.4.13
-## 1,下载
+## 1,下载和解压
 我们通过zookeeper官网或者是镜像服务器下载最新版本，https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper
+
+直接通过tar命令解压zookeeper-3.4.13.tar.gz到某个目录，比如/root/zookeeper/zookeeper-3.4.13
 
 ## 2，修改配置
 ### 2.1 主配置文件
