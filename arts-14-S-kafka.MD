@@ -13,6 +13,10 @@
 ## 2，zookeeper准备
   可以使用kafka自带的zookeeper，也可以自行预先安装zookeeper。
   
+  单机测试可以直接运行kafka解压后目录自带的zookeeper，通过[
+  bin/zookeeper-server-start.sh config/zookeeper.properties]命令启动，这样的话kafka的zookeeper.connect就设置为localhost:2181即可。
+  下文采用单独安装的zookeeper集群。
+  
 ## 3，修改配置文件
   conf/server.properties
   
