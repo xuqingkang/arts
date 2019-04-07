@@ -42,7 +42,7 @@ fragmentation problems than libc malloc
 [root@rhel7 redis-5.0.4] make
 ```
 ### 2.3 安装确认和二进制拷贝
-  编译成功后在src目录会有如下几个二进制文件，redis-server为服务端，redis-cli是命令行工具。
+  编译成功后在src目录会有如下几个二进制文件，==redis-server==为服务端，redis-cli是命令行工具。
 ```
 -rwxr-xr-x. 1 root root 8100855 4?   4 22:52 redis-check-aof
 -rwxr-xr-x. 1 root root 8100855 4?   4 22:52 redis-check-rdb
@@ -53,7 +53,7 @@ fragmentation problems than libc malloc
 ```
 ## 3，集群创建
 ### 3.1 配置文件准备
-  redis的主要配置文件就是redis.conf文件，修改好这个文件，然后运行redis-server的时候指定这个配置文件便可。
+  redis的主要配置文件就是==redis.conf==文件，修改好这个文件，然后运行redis-server的时候指定这个配置文件便可。
   redis.conf的主要配置如下：我们开启了所有的集群配置
   
 ```
@@ -181,7 +181,7 @@ OK
     </dependency>
 ```
 
-  测试Redis的代码简单参考如下。主要是redis.clients.jedis.Jedis，还可以直接调用clusterNodes()方法获取集群实例列表。
+  测试Redis的代码简单参考如下。主要是==redis.clients.jedis.Jedis==，还可以直接调用clusterNodes()方法获取集群实例列表。
 
 ```
 package jedis;
@@ -208,5 +208,5 @@ public class JedisPing {
     
 }
 ```
-
+==注意==: 如果需要通过set设置redis集群中数据的话，需要使用"redis.clients.jedis.JedisCluster"客户端。
 
