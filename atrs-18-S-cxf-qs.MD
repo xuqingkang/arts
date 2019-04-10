@@ -1,11 +1,11 @@
-# ***Apache CXFÈëÃÅ
-  Apache CXFÊÇÒ»ÖÖWeb Service·şÎñºÍ¿Í»§¶ËµÄÊµÏÖ£¬Æä¿ÉÒÔºÍSpringÅäºÏ¿ìËÙ¹¹½¨WebService£¬»¹ÓĞ Ëüµ÷ÓÃWebServiceµÄ¿Í»§¶ËapiÒ²ÊÇ±È½Ï¼òµ¥µÄ£¬½ñÌìÎÒÃÇÀ´¿´ÔõÃ´ÊµÏÖÒ»¸ö¼òµ¥µÄWeb Service·şÎñ²¢µ÷ÓÃËû¡£
+# ***Apache CXFå…¥é—¨
+  Apache CXFæ˜¯ä¸€ç§Web ServiceæœåŠ¡å’Œå®¢æˆ·ç«¯çš„å®ç°ï¼Œå…¶å¯ä»¥å’ŒSpringé…åˆå¿«é€Ÿæ„å»ºWebServiceï¼Œè¿˜æœ‰ å®ƒè°ƒç”¨WebServiceçš„å®¢æˆ·ç«¯apiä¹Ÿæ˜¯æ¯”è¾ƒç®€å•çš„ï¼Œä»Šå¤©æˆ‘ä»¬æ¥çœ‹æ€ä¹ˆå®ç°ä¸€ä¸ªç®€å•çš„Web ServiceæœåŠ¡å¹¶è°ƒç”¨ä»–ã€‚
   
-  ## 1£¬·şÎñ¶Ë¿ª·¢
-    ÎÒÃÇµÄÀı×ÓÀ´×ÔÓÚ¹ÙÍø£ºhttp://cxf.apache.org/docs/a-simple-jax-ws-service.html
-    ÎÒÃÇ°Ñ¹ÙÍøµÄHelloWorldÀı×Ó¸ÄÎªÍ¨¹ıSpring½áºÏ×¢²á³ÉWebService
-  ### 1.1 Service½Ó¿ÚºÍÊµÏÖ
-  ÎÒÃÇÊµÏÖÁËÈçÏÂµÄService½Ó¿Ú£¬ÆäÖĞsayHiÊÇ´«µİ×Ö·û´®£¬sayHiToUserÊÇĞèÒª´«µİÒ»¸öUser(½Ó¿Ú£¬ÓĞ×¨ÃÅµÄXmlAdapter´¦ÀíĞòÁĞ»¯/marshal),getUsersÊÇ´Ó·şÎñÆ÷¶Ë»ñÈ¡ÓÃ»§ÁĞ±í£¬ÕâÀïÒ²ÑİÊ¾ÁËWeb Service¶ÔMap¶ÔÏóµÄmarshal²Ù×÷¡£
+  ## 1ï¼ŒæœåŠ¡ç«¯å¼€å‘
+    æˆ‘ä»¬çš„ä¾‹å­æ¥è‡ªäºå®˜ç½‘ï¼šhttp://cxf.apache.org/docs/a-simple-jax-ws-service.html
+    æˆ‘ä»¬æŠŠå®˜ç½‘çš„HelloWorldä¾‹å­æ”¹ä¸ºé€šè¿‡Springç»“åˆæ³¨å†ŒæˆWebService
+  ### 1.1 Serviceæ¥å£å’Œå®ç°
+  æˆ‘ä»¬å®ç°äº†å¦‚ä¸‹çš„Serviceæ¥å£ï¼Œå…¶ä¸­sayHiæ˜¯ä¼ é€’å­—ç¬¦ä¸²ï¼ŒsayHiToUseræ˜¯éœ€è¦ä¼ é€’ä¸€ä¸ªUser(æ¥å£ï¼Œæœ‰ä¸“é—¨çš„XmlAdapterå¤„ç†åºåˆ—åŒ–/marshal),getUsersæ˜¯ä»æœåŠ¡å™¨ç«¯è·å–ç”¨æˆ·åˆ—è¡¨ï¼Œè¿™é‡Œä¹Ÿæ¼”ç¤ºäº†Web Serviceå¯¹Mapå¯¹è±¡çš„marshalæ“ä½œã€‚
 ```
 package service;
 
@@ -20,19 +20,19 @@ public interface HelloWorld {
     String sayHi(String text);
  
     /* 
-     * ´«µİ½Ó¿ÚµÄWebServiceÊ¾Àı£¬JAXB²»ÄÜÖ±½Ó´«µİ½Ó¿Ú£¬ĞèÒª×¨ÃÅµÄXmlAdapterÀ´´¦ÀíÏûÏ¢´«µİ¡£
+     * ä¼ é€’æ¥å£çš„WebServiceç¤ºä¾‹ï¼ŒJAXBä¸èƒ½ç›´æ¥ä¼ é€’æ¥å£ï¼Œéœ€è¦ä¸“é—¨çš„XmlAdapteræ¥å¤„ç†æ¶ˆæ¯ä¼ é€’ã€‚
      */
     String sayHiToUser(User user);
  
     /* 
-     * JAXBÒ²²»Ö§³ÖMap£¬ĞèÒªÍ¨¹ıXmlAdapter°ÑMapÓ³ÉäÎªBeans¡£
+     * JAXBä¹Ÿä¸æ”¯æŒMapï¼Œéœ€è¦é€šè¿‡XmlAdapteræŠŠMapæ˜ å°„ä¸ºBeansã€‚
      */
     @XmlJavaTypeAdapter(IntegerUserMapAdapter.class)
     Map<Integer, User> getUsers();
 } 
 
 ```
-  ServiceµÄÊµÏÖÊÇ·Ç³£¼òµ¥µÄ¡£
+  Serviceçš„å®ç°æ˜¯éå¸¸ç®€å•çš„ã€‚
   
 ```
 package service;
@@ -66,12 +66,12 @@ public class HelloWorldImpl implements HelloWorld {
 }
 ```
 
-### 1.2 ¶ÔÏóµÄĞòÁĞ»¯:marshal/unmashal
-  ÎÒÃÇµÄService½Ó¿ÚºÍÊµÏÖ¶¼ÊÇºÜ¼òµ¥µÄ£¬µ«ÆäÊµºó±ßĞèÒª¶¨ÒåºÜ¶àÀàÍê³ÉĞòÁĞ»¯£¬ÔÚWeb ServiceÖĞ½Ğ×ömarshalºÍunmashal²Ù×÷µÄXmlAdapter¡£
+### 1.2 å¯¹è±¡çš„åºåˆ—åŒ–:marshal/unmashal
+  æˆ‘ä»¬çš„Serviceæ¥å£å’Œå®ç°éƒ½æ˜¯å¾ˆç®€å•çš„ï¼Œä½†å…¶å®åè¾¹éœ€è¦å®šä¹‰å¾ˆå¤šç±»å®Œæˆåºåˆ—åŒ–ï¼Œåœ¨Web Serviceä¸­å«åšmarshalå’Œunmashalæ“ä½œçš„XmlAdapterã€‚
   
-  ÎªÁËUserºÍUser MapĞèÒªÓĞÈçÏÂ¼¸¸öÖ§³ÅÀà
+  ä¸ºäº†Userå’ŒUser Mapéœ€è¦æœ‰å¦‚ä¸‹å‡ ä¸ªæ”¯æ’‘ç±»
   
-==User==£º
+==User==ï¼š
 ```
 package service;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -82,7 +82,7 @@ public interface User {
     String getName();
 }
 ```
-==UserImpl==£º
+==UserImpl==ï¼š
 
 ```
 package service;
@@ -108,7 +108,7 @@ public class UserImpl implements User {
     }
 }
 ```
-==UserAdapter==£º
+==UserAdapter==ï¼š
 
 ```
 package service;
@@ -128,7 +128,7 @@ public class UserAdapter extends XmlAdapter<UserImpl, User> {
 }
 ```
 
-==IntegerUserMap==£º¸ÃÀàµÄ¹¦ÄÜÊÇÍ¨¹ıList·½Ê½±£´æUserÁĞ±í
+==IntegerUserMap==ï¼šè¯¥ç±»çš„åŠŸèƒ½æ˜¯é€šè¿‡Listæ–¹å¼ä¿å­˜Useråˆ—è¡¨
 ```
 package service;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -172,7 +172,7 @@ public class IntegerUserMap {
     }
 }
 ```
-==IntegerUserMapAdapter==£ºÕâ¸öÀàÔòÊÇÍê³ÉUser Map×ª»»³ÉBean£¬ÆäÊµ×îºóµÄBean¾ÍÊÇÉÏ±ß±£´æUserÁĞ±íµÄ==IntegerUserMap==
+==IntegerUserMapAdapter==ï¼šè¿™ä¸ªç±»åˆ™æ˜¯å®ŒæˆUser Mapè½¬æ¢æˆBeanï¼Œå…¶å®æœ€åçš„Beanå°±æ˜¯ä¸Šè¾¹ä¿å­˜Useråˆ—è¡¨çš„==IntegerUserMap==
 ```
 package service;
 import java.util.LinkedHashMap;
@@ -202,11 +202,11 @@ public class IntegerUserMapAdapter extends XmlAdapter<IntegerUserMap, Map<Intege
 
 }
 ```
-  ### 1.3 Ó¦ÓÃweb.xml
-  Ó¦ÓÃµÄweb.xmlĞèÒª¶¨ÒåSpringºÍCXFServletÅäÖÃ£¬ÆäÖĞÓ¦ÓÃÉÏÏÂÎÄºó¸úÉÏ"/service"µÄÇëÇó¶¼½«±»CXFServlet´¦Àí¡£
-  Spring×¢²áWeb ServiceµÄÅäÖÃÎÄ¼şÎª£º==/WEB-INF/config/cxf-servlet.xml==
+  ### 1.3 åº”ç”¨web.xml
+  åº”ç”¨çš„web.xmléœ€è¦å®šä¹‰Springå’ŒCXFServleté…ç½®ï¼Œå…¶ä¸­åº”ç”¨ä¸Šä¸‹æ–‡åè·Ÿä¸Š"/service"çš„è¯·æ±‚éƒ½å°†è¢«CXFServletå¤„ç†ã€‚
+  Springæ³¨å†ŒWeb Serviceçš„é…ç½®æ–‡ä»¶ä¸ºï¼š==/WEB-INF/config/cxf-servlet.xml==
 ```
-  <!-- ¼ÓÔØspringÅäÖÃÎÄ¼ş -->
+  <!-- åŠ è½½springé…ç½®æ–‡ä»¶ -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/config/cxf-servlet.xml</param-value>
@@ -214,7 +214,7 @@ public class IntegerUserMapAdapter extends XmlAdapter<IntegerUserMap, Map<Intege
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    <!-- ×¢²áCXF servlet -->
+    <!-- æ³¨å†ŒCXF servlet -->
     <servlet>
         <servlet-name>CXFServlet</servlet-name>
         <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
@@ -227,7 +227,7 @@ public class IntegerUserMapAdapter extends XmlAdapter<IntegerUserMap, Map<Intege
     <!-- CXF END -->
 ```
 
-ÈçÏÂ£¬ÎÒÃÇÔÚ==cxf-servlet.xml==ÖĞ¶¨ÒåÁËÒ»¸öBean(Ò²¾ÍÊÇservice.HelloWorldImpl)£¬È»ºóÍ¨¹ıÒıÓÃµÄ·½Ê½°ÑÕâ¸öÀà×¢²áÎªWeb Service
+å¦‚ä¸‹ï¼Œæˆ‘ä»¬åœ¨==cxf-servlet.xml==ä¸­å®šä¹‰äº†ä¸€ä¸ªBean(ä¹Ÿå°±æ˜¯service.HelloWorldImpl)ï¼Œç„¶åé€šè¿‡å¼•ç”¨çš„æ–¹å¼æŠŠè¿™ä¸ªç±»æ³¨å†Œä¸ºWeb Service
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -247,20 +247,20 @@ public class IntegerUserMapAdapter extends XmlAdapter<IntegerUserMap, Map<Intege
 
 </beans>
 ```
-  ## 2£¬·şÎñ²¿Êğ¼°WSDLÑéÖ¤
-  ### 2.1 ²¿Êğ
-  ÈçÉÏµÄÀàÍê³É£¬×îÖÕ´ò°üµ½warÎÄ¼şÖĞ¿ÉÖ±½Ó²¿ÊğÓÚTomcat£¬±ÈÈç±¾ÀıÖĞtomcat¶Ë¿ÚÎª8081£¬Ó¦ÓÃ°üÎªcxf-test.war¡£²¿ÊğÓÚtomcatºó£¬ÇëÇóµØÖ·ÔòÎªhttp://localhost:8081/cxf-test
+  ## 2ï¼ŒæœåŠ¡éƒ¨ç½²åŠWSDLéªŒè¯
+  ### 2.1 éƒ¨ç½²
+  å¦‚ä¸Šçš„ç±»å®Œæˆï¼Œæœ€ç»ˆæ‰“åŒ…åˆ°waræ–‡ä»¶ä¸­å¯ç›´æ¥éƒ¨ç½²äºTomcatï¼Œæ¯”å¦‚æœ¬ä¾‹ä¸­tomcatç«¯å£ä¸º8081ï¼Œåº”ç”¨åŒ…ä¸ºcxf-test.warã€‚éƒ¨ç½²äºtomcatåï¼Œè¯·æ±‚åœ°å€åˆ™ä¸ºhttp://localhost:8081/cxf-test
   
-  ### 2.2 ·şÎñÑéÖ¤
-  µ±²¿Êğ³É¹¦·şÎñÖ®ºó£¬ÎÒÃÇÍ¨¹ıä¯ÀÀÆ÷·ÃÎÊµØÖ·£ºhttp://localhost:8081/cxf-test/service/helloworld?wsdl
-  ¿ÉÒÔ¿´µ½ÈçÏÂWeb ServiceµÄWSDLÃèÊö£¬ÎÒÓÃºìÉ«¿ò¿ò¿ò³öÁËÖØÒªĞÅÏ¢£¬ÕâĞ©ĞÅÏ¢ÔÚÎÒÃÇÊ¹ÓÃ¿Í»§¶Ëµ÷ÓÃÕâ¸öWeb ServiceµÄÊ±ºòÊÇ·Ç³£ÖØÒªµÄ£¬±ÈÈçÃû³Æ¿Õ¼ä¡¢·şÎñ¶Ë¿ÚÃû¡¢·şÎñÃû¡¢·şÎñµØÖ·µÈ
+  ### 2.2 æœåŠ¡éªŒè¯
+  å½“éƒ¨ç½²æˆåŠŸæœåŠ¡ä¹‹åï¼Œæˆ‘ä»¬é€šè¿‡æµè§ˆå™¨è®¿é—®åœ°å€ï¼šhttp://localhost:8081/cxf-test/service/helloworld?wsdl
+  å¯ä»¥çœ‹åˆ°å¦‚ä¸‹Web Serviceçš„WSDLæè¿°ï¼Œæˆ‘ç”¨çº¢è‰²æ¡†æ¡†æ¡†å‡ºäº†é‡è¦ä¿¡æ¯ï¼Œè¿™äº›ä¿¡æ¯åœ¨æˆ‘ä»¬ä½¿ç”¨å®¢æˆ·ç«¯è°ƒç”¨è¿™ä¸ªWeb Serviceçš„æ—¶å€™æ˜¯éå¸¸é‡è¦çš„ï¼Œæ¯”å¦‚åç§°ç©ºé—´ã€æœåŠ¡ç«¯å£åã€æœåŠ¡åã€æœåŠ¡åœ°å€ç­‰
 
   ![image](./images/arts-18-S-CXF-qs-wsdl.png)
   
- ## 3£¬¿Í»§¶ËÊµÏÖ
- ### 3.1 ºËĞÄ´úÂëÊ¾Àı
+ ## 3ï¼Œå®¢æˆ·ç«¯å®ç°
+ ### 3.1 æ ¸å¿ƒä»£ç ç¤ºä¾‹
 
-  Èç¹ûĞèÒª×î¼òµ¥»°ÊµÏÖÒ»¸ö¿Í»§¶ËµÄ»°£¬¾ÍÖ»ĞèÒªÏÂÃæµÄ´úÂë¡£×¢ÒâÉèÖÃÕıÈ·url£¬namespace£¬·şÎñÃû³Æ£¬·şÎñ¶Ë¿ÚÃû³ÆµÈ¡£ÈçÏÂÎª×î¹Ø¼üµÄÒıÓÃÀàºÍÊµÏÖ´úÂë£º
+  å¦‚æœéœ€è¦æœ€ç®€å•è¯å®ç°ä¸€ä¸ªå®¢æˆ·ç«¯çš„è¯ï¼Œå°±åªéœ€è¦ä¸‹é¢çš„ä»£ç ã€‚æ³¨æ„è®¾ç½®æ­£ç¡®urlï¼Œnamespaceï¼ŒæœåŠ¡åç§°ï¼ŒæœåŠ¡ç«¯å£åç§°ç­‰ã€‚å¦‚ä¸‹ä¸ºæœ€å…³é”®çš„å¼•ç”¨ç±»å’Œå®ç°ä»£ç ï¼š
     
 ```
 import javax.xml.namespace.QName;
@@ -273,7 +273,7 @@ import org.apache.cxf.transport.http.HTTPConduit;
 import org.apache.cxf.transports.http.configuration.HTTPClientPolicy;
 
 String serviceURL = "http://localhost:8081/cxf-test/service/helloworld?wsdl";
-String namespace = "http://service/"£»
+String namespace = "http://service/"ï¼›
 String serviceName = "HelloWorld";
 String servicePortName = "HelloWorldImplPort";
 
@@ -282,9 +282,9 @@ proxy = service.getPort(new QName(namespace, servicePortName), service.HelloWorl
 HelloWorld hw = (HelloWorld)proxy;
 hw.sayHi("ApacheCXF");
 ```
-  ### 3.2 Íê³É´úÂëÊµÏÖ
-  ±¾ÀıÖĞ£¬ÊµÑéÄ¿µÄ£¬ÎÒ°Ñ·şÎñ¶ËĞ´³ÉÁËÒ»¸öServlet²¿ÊğÓÚService¶ËËùÔÚµÄwar°üÀï±ß¡£
-  ÈçÏÂWebAddressÖ÷ÒªÊÇWeb·şÎñµÄĞÅÏ¢±£´æ£¬ÆäÖĞ¶¨ÒåÁËÁ½ÖÖ·½Ê½·ÃÎÊ·şÎñ¶Ë¡£
+  ### 3.2 å®Œæ•´ä»£ç å®ç°
+  æœ¬ä¾‹ä¸­ï¼Œå®éªŒç›®çš„ï¼Œæˆ‘æŠŠæœåŠ¡ç«¯å†™æˆäº†ä¸€ä¸ªServletéƒ¨ç½²äºServiceç«¯æ‰€åœ¨çš„waråŒ…é‡Œè¾¹ã€‚
+  å¦‚ä¸‹WebAddressä¸»è¦æ˜¯WebæœåŠ¡çš„ä¿¡æ¯ä¿å­˜ï¼Œå…¶ä¸­å®šä¹‰äº†ä¸¤ç§æ–¹å¼è®¿é—®æœåŠ¡ç«¯ã€‚
 ```
 
 public class WebAddress {
@@ -402,8 +402,8 @@ public class WebAddress {
 
 ```
 
-==Servlet==£ºÈçÏÂÎª¾ßÌåµÄÊµÏÖ£¬ÒòÎªÊÇ¿Í»§¶ËServlet¸úWeb ServiceÔÚÒ»¸öwar°ü£¬Ò²¾ÍÊÇÒ»¸öÓ¦ÓÃÖĞ£¬ËùÒÔ¶Ë¿ÚºÍÉÏÏÂÎÄ¶¼ÊÇ¹²ÏíµÄ£¬ËùÒÔ
-Ê¹ÓÃrequest»ñÈ¡±¾µØµØÖ·¡¢¶Ë¿ÚºÍÉÏÏÂÎÄµÈĞÅÏ¢¡£
+==Servlet==ï¼šå¦‚ä¸‹ä¸ºå…·ä½“çš„å®ç°ï¼Œå› ä¸ºæ˜¯å®¢æˆ·ç«¯Servletè·ŸWeb Serviceåœ¨ä¸€ä¸ªwaråŒ…ï¼Œä¹Ÿå°±æ˜¯ä¸€ä¸ªåº”ç”¨ä¸­ï¼Œæ‰€ä»¥ç«¯å£å’Œä¸Šä¸‹æ–‡éƒ½æ˜¯å…±äº«çš„ï¼Œæ‰€ä»¥
+ä½¿ç”¨requestè·å–æœ¬åœ°åœ°å€ã€ç«¯å£å’Œä¸Šä¸‹æ–‡ç­‰ä¿¡æ¯ã€‚
 ```
 
 
@@ -559,14 +559,14 @@ public class TestCXFClientServlet extends HttpServlet {
 }
 
 ```
-·ÃÎÊÒÔÉÏServlet(http://192.168.32.1:8081/cxf-test/test)£¬Õı³£Çé¿ö»áÔÚä¯ÀÀÆ÷¿´µ½ÈçÏÂĞÅÏ¢£º
+è®¿é—®ä»¥ä¸ŠServlet(http://192.168.32.1:8081/cxf-test/test)ï¼Œæ­£å¸¸æƒ…å†µä¼šåœ¨æµè§ˆå™¨çœ‹åˆ°å¦‚ä¸‹ä¿¡æ¯ï¼š
 ```
 Served at: /cxf-testI'm ok!Message come from server is:Hello yyy
 ```
-ÈçÏÂÏÈ¶à´ÎÖ´ĞĞ£ºhttp://192.168.32.1:8081/cxf-test/test?method=sayHiToUser »áÍùÓÃ»§ÁĞ±íÖĞÔö¼ÓÃû³Æ´øÏµÍ³Ê±¼äµÄÓÃ»§¡£
+å¦‚ä¸‹å…ˆå¤šæ¬¡æ‰§è¡Œï¼šhttp://192.168.32.1:8081/cxf-test/test?method=sayHiToUser ä¼šå¾€ç”¨æˆ·åˆ—è¡¨ä¸­å¢åŠ åç§°å¸¦ç³»ç»Ÿæ—¶é—´çš„ç”¨æˆ·ã€‚
 
-Èç¹ûÖ´ĞĞ£ºhttp://192.168.32.1:8081/cxf-test/test?method=getUsers 
-Ôò»á¿´µ½ÀàËÆÈçÏÂµÄĞÅÏ¢
+å¦‚æœæ‰§è¡Œï¼šhttp://192.168.32.1:8081/cxf-test/test?method=getUsers 
+åˆ™ä¼šçœ‹åˆ°ç±»ä¼¼å¦‚ä¸‹çš„ä¿¡æ¯
 
 ![image](./images/arts-18-S-CXF-qs-getUsers.png)
 
