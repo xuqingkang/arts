@@ -282,6 +282,11 @@ proxy = service.getPort(new QName(namespace, servicePortName), service.HelloWorl
 HelloWorld hw = (HelloWorld)proxy;
 hw.sayHi("ApacheCXF");
 ```
+特别说明一下，url后边需要跟上"?wsdl" 否则你可能遇到这样的错误：
+```
+Caused by: javax.wsdl.WSDLException: WSDLException (at /soap:Envelope): faultCode=INVALID_WSDL: Expected element '{http://schemas.xmlsoap.org/wsdl/}definitions'.
+```
+
   ### 3.2 完整代码实现
   本例中，实验目的，我把服务端写成了一个Servlet部署于Service端所在的war包里边。
   如下WebAddress主要是Web服务的信息保存，其中定义了两种方式访问服务端。
